@@ -15,13 +15,9 @@ namespace MyCinema.Models
         [StringLength(50)]
         public string RoomName { get; set; }
 
+        [Required]
         public int NrOfSeats { get; set; }
 
-        [Required]
-        public byte[] RoomImage1 { get; set; }
 
-        public byte[] RoomImage2 { get; set; }
-
-        public byte[] RoomImage3 { get; set; }
     }
 }

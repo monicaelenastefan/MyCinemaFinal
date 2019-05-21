@@ -34,5 +34,9 @@ namespace MyCinema.Models
                 .Property(e => e.EmailID)
                 .IsUnicode(false);
         }
+
+        public System.Data.Entity.DbSet<MyCinema.Models.Timetable> Timetables { get; set; }
+
+        public System.Data.Entity.DbSet<MyCinema.Models.RoomPics> RoomPics { get; set; }
     }
 }
