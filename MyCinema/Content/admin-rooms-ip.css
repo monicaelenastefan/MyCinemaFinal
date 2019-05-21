@@ -1,0 +1,74 @@
+.buttons-top
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons-room
+{
+    color: white;
+    background-color: #3381ff;
+    border-radius: 5px;
+    padding: 10px 40px;
+    border: none;
+    font-size: 13px;
+    margin: 10px;
+}
+
+.buttons-room:disabled {
+    background-color: #5C9AFF;
+}
+
+.buttons-room:active {
+    background-color: #0062ff;
+}
+
+.table-of-rooms
+{
+    width: 100%;
+    text-align: center;
+}
+
+.table-of-rooms th
+{
+    font-size: 16px;
+    background-color: #f0f0f7;
+    text-align: center;
+}
+
+.table-of-rooms tr:nth-child(2n+1)
+{
+    background-color: lavender;
+}
+
+.table-of-rooms td:first-child
+{
+    font-weight: bold;
+}
+
+.table-of-rooms img
+{
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+}
+
+.main-container .old-image
+{
+    height: 150px;
+    width: 150px;
+}
+
+.main-panel
+{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0px 15px 15px 15px;
+    width: 50%;
+}
+
+.main-panel p
+{
+    margin: 0;
+}

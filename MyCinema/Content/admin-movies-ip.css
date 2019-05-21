@@ -1,0 +1,70 @@
+.main-container
+{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 5px;
+}
+
+.row-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.buttons-top
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons-movie
+{
+    color: white;
+    background-color: #3381ff;
+    border-radius: 5px;
+    padding: 10px 40px;
+    border: none;
+    font-size: 13px;
+    margin: 10px;
+}
+
+.buttons-movie:disabled {
+    background-color: #5C9AFF;
+}
+
+.buttons-movie:active {
+    background-color: #0062ff;
+}
+
+.table-of-movies
+{
+    width: 100%;
+    text-align: center;
+}
+
+.table-of-movies th
+{
+    font-size: 16px;
+    background-color: #f0f0f7;
+    text-align: center;
+}
+
+.table-of-movies tr:nth-child(2n+1)
+{
+    background-color: lavender;
+}
+
+.table-of-movies td:first-child
+{
+    font-weight: bold;
+}
+
+.table-of-movies img
+{
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+}
