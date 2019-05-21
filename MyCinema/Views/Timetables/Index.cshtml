@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MyCinema.Models.Timetable>
+
+@{
+    ViewBag.Title = "Index";
+    List<MyCinema.Models.Movies> Movies = ViewBag.Movies;
+    List<MyCinema.Models.Rooms> Rooms = ViewBag.Rooms;
+
+}
+
+
+<head>
+    <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+    <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+    <link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+</head>
+
+<title>MyCinema | Time Schedule</title>
+
+<div class="main">
+    <h2 class="title">Time schedule</h2>
+
+    <div class="main-container">
+
+
+
+        <div class="buttons-top">
+            <a class="buttons-movie" href="@Url.Action("Create", "Timetables" )" onclick="currentMenu()">
+                Add
+            </a>
+            <a class="buttons-movie" href="@Url.Action("Index", "Timetables" )" onclick="currentMenu()">
+                Delete(to do)
+            </a>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <script src="../Scripts/script.js"></script>
+        <script src="../Scripts/alert.js"></script>
