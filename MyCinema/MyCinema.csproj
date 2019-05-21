@@ -61,10 +61,6 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Build.Tasks, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\Microsoft.Build.Tasks.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -158,9 +154,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddMovieController.cs" />
-    <Compile Include="Controllers\CinemaRoomsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RoomPicsController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="CustomRazorViewEngine.cs" />
@@ -171,17 +169,34 @@
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MyModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Models\RoomPics.cs" />
     <Compile Include="Models\Rooms.cs" />
+    <Compile Include="Models\Timetable.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin-home-ip.css" />
+    <Content Include="Content\admin-menu-ip.css" />
+    <Content Include="Content\admin-movies-add-ip.css" />
+    <Content Include="Content\admin-movies-edit-ip.css" />
+    <Content Include="Content\admin-movies-ip.css" />
+    <Content Include="Content\admin-program-add-ip.css" />
+    <Content Include="Content\admin-program-ip.css" />
+    <Content Include="Content\admin-rooms-add-ip.css" />
+    <Content Include="Content\admin-rooms-ip.css" />
+    <Content Include="Content\admin-users-add-ip.css" />
+    <Content Include="Content\admin-users-edit-ip.css" />
+    <Content Include="Content\admin-users-ip.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images.css" />
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\lightbox.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -191,9 +206,15 @@
     <Content Include="images\cinema-room-2-1.jpg" />
     <Content Include="images\cinema-room-2-2.jpg" />
     <Content Include="images\john-doe.png" />
+    <Content Include="Scripts\admin-movies-ip.js" />
+    <Content Include="Scripts\admin-program-ip.js" />
+    <Content Include="Scripts\admin-rooms-ip.js" />
+    <Content Include="Scripts\alert.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="bundleconfig.json" />
+    <Content Include="Content\jquery-3.3.1.min.map" />
+    <Content Include="Content\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -205,8 +226,15 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox-plus-jquery.js" />
+    <Content Include="Scripts\lightbox-plus-jquery.min.js" />
+    <Content Include="Scripts\lightbox.js" />
+    <Content Include="Scripts\lightbox.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\images.js" />
+    <Content Include="Scripts\slideshow.js" />
+    <Content Include="Scripts\timingfield.js" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\Menu.css" />
@@ -239,10 +267,32 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Settings.cshtml" />
-    <Content Include="Views\Movies\Movies.cshtml" />
-    <Content Include="Views\AddMovie\AddMovie.cshtml" />
     <Content Include="Views\Home\AddRoom.cshtml" />
     <Content Include="Views\CinemaRooms\Rooms.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\AddMovie\AddMovie.cshtml" />
+    <Content Include="Views\Timetables\Create.cshtml" />
+    <Content Include="Views\Timetables\Delete.cshtml" />
+    <Content Include="Views\Timetables\Details.cshtml" />
+    <Content Include="Views\Timetables\Edit.cshtml" />
+    <Content Include="Views\Timetables\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\RoomPics\Create.cshtml" />
+    <Content Include="Views\RoomPics\Delete.cshtml" />
+    <Content Include="Views\RoomPics\Details.cshtml" />
+    <Content Include="Views\RoomPics\Edit.cshtml" />
+    <Content Include="Views\RoomPics\Index.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Scripts\lightbox-plus-jquery.min.map" />
+    <Content Include="Scripts\lightbox.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
