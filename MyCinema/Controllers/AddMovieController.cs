@@ -30,8 +30,8 @@ namespace MyCInemaMovies.Controllers
             MyModel db = new MyModel();
             if (ImageData != null)
             {
-                model.Image = new byte[ImageData.ContentLength];
-                ImageData.InputStream.Read(model.Image, 0, ImageData.ContentLength);
+               // model.Image = new byte[ImageData.ContentLength];
+                //ImageData.InputStream.Read(model.Image, 0, ImageData.ContentLength);
 
             }
 

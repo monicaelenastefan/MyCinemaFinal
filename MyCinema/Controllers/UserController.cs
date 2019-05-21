@@ -15,7 +15,7 @@ namespace MyCinema.Controllers
         [HttpGet]
         public ActionResult Registration()
         {
-            return View();
+            return View("Registration", "_Login");
         }
 
         [HttpPost]
@@ -96,7 +96,7 @@ namespace MyCinema.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View("Login", "_Login");
         }
 
 
@@ -107,7 +107,7 @@ namespace MyCinema.Controllers
             string message = "";
             using (MyModel dc = new MyModel())
             {
-                var v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
+                Users v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
                 if (v != null)
                 {
                     if (string.Compare(Crypto.Hash(login.Password), v.Password) == 0)
@@ -132,7 +132,7 @@ namespace MyCinema.Controllers
                                 return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
 
                             return RedirectToAction("Index", "Home");
-                          
+
                         }
 
                     }
@@ -220,7 +220,7 @@ namespace MyCinema.Controllers
 
         public ActionResult ForgotPassword()
         {
-            return View();
+            return View("ForgotPassword", "_Login");
         }
 
         [HttpPost]
