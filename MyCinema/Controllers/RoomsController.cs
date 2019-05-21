@@ -8,114 +8,115 @@ using System.Web;
 using System.Web.Mvc;
 using MyCinema.Models;
 
+
 namespace MyCinema.Controllers
 {
-    public class MoviesController : Controller
+    public class RoomsController : Controller
     {
         private MyModel db = new MyModel();
 
-        // GET: Movies
+        // GET: Rooms
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            ViewBag.Images = db.RoomPics.ToList();
+            return View(db.Rooms.ToList());
         }
 
-        // GET: Movies/Details/5
+        // GET: Rooms/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Images = db.RoomPics.ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.Movies.Find(id);
-            if (movies == null)
+            Rooms rooms = db.Rooms.Find(id);
+            if (rooms == null)
             {
                 return HttpNotFound();
             }
-            return View(movies);
+            return View(rooms);
         }
 
-        // GET: Movies/Create
+        // GET: Rooms/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Rooms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MovieId,Name,Image,Price,MinimalAge,ReleaseDate,Duration")] Movies movies)
+        public ActionResult Create([Bind(Include = "RoomId,RoomName,NrOfSeats")] Rooms rooms)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movies);
+                db.Rooms.Add(rooms);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(movies);
+            return View(rooms);
         }
 
-        // GET: Movies/Edit/5
+        // GET: Rooms/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.Movies.Find(id);
-            if (movies == null)
+            Rooms rooms = db.Rooms.Find(id);
+            if (rooms == null)
             {
                 return HttpNotFound();
             }
-            return View(movies);
+            return View(rooms);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Rooms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MovieId,Name,Image,Price,MinimalAge,ReleaseDate,Duration")] Movies movies)
+        public ActionResult Edit([Bind(Include = "RoomId,RoomName,NrOfSeats")] Rooms rooms)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movies).State = EntityState.Modified;
+                db.Entry(rooms).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movies);
+            return View(rooms);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Rooms/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.Movies.Find(id);
-            if (movies == null)
+            Rooms rooms = db.Rooms.Find(id);
+            if (rooms == null)
             {
                 return HttpNotFound();
             }
-            return View(movies);
+            return View(rooms);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movies movies = db.Movies.Find(id);
-            db.Movies.Remove(movies);
+            Rooms rooms = db.Rooms.Find(id);
+            db.Rooms.Remove(rooms);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        
 
         protected override void Dispose(bool disposing)
         {

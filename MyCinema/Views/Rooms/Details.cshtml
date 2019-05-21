@@ -1,0 +1,76 @@
+﻿@model MyCinema.Models.Rooms
+
+@{
+    ViewBag.Title = "Details";
+    List<MyCinema.Models.RoomPics> Pictures = ViewBag.Images;
+}
+
+<head>
+    <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+    <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+    <link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+</head>
+
+<title>MyCinema | Rooms</title>
+
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt></dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NrOfSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrOfSeats)
+        </dd>
+
+        <div class="w3-content w3-display-container slider" id="@Model.RoomName.ToString()" style=" max-width:500px;  margin: auto;">
+
+            @foreach (var image in Pictures)
+            {
+                if (Model.RoomId == image.RoomId)
+                {
+
+                    <a href="@image.ImageUrl" data-lightbox="@Model.RoomId" data-title="@Model.RoomId">
+                        <img class="mySlides" src="@image.ImageUrl" style="width:100%;" />
+                    </a>
+
+                }
+                <a class="w3-btn-floating w3-display-left" onclick="plusDivs(this,-1)">&#10094;</a>
+                <a class="w3-btn-floating w3-display-right" onclick="plusDivs(this,1)">&#10095;</a>
+
+            }
+        </div>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script src="/Scripts/admin-rooms-ip.js"></script>
+<script src="/Scripts/alert.js"></script>
+<script src="/Scripts/slideshow.js"></script>
+<script src="/Scripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

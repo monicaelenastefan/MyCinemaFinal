@@ -1,0 +1,115 @@
+﻿@model IEnumerable<MyCinema.Models.Rooms>
+
+@{
+
+    ViewBag.Title = "Index";
+    List<MyCinema.Models.RoomPics> Pictures = ViewBag.Images;
+
+}
+    <head>
+        <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+        <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+        <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+        <link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+    </head>
+
+<title>MyCinema | Rooms</title>
+
+<div class="main">
+    <h2 class="title">Admin | Rooms</h2>
+    <div class="alert alert-danger">
+        Mesaj cand ceva nu este ok -> eroare. Dispar automat cu scriptul js
+    </div>
+    <div class="alert alert-success">
+        Mesaj cand ceva a descurs cu succes(modificarea filmului, stergerea unui
+        film, etc)
+    </div>
+    <div class="main-container">
+
+
+
+        <div class="buttons-top">
+            <a class="buttons-movie" href="@Url.Action("Create", "Rooms" )" onclick="currentMenu()">
+                Add Room
+            </a>
+            <a class="buttons-movie" href="@Url.Action("Index", "Rooms" )" onclick="currentMenu()">
+                Delete Room(to do)
+            </a>
+
+
+
+        </div>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NrOfSeats)
+                </th>
+                <th>
+                    Images
+                </th>
+                <th>Options</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NrOfSeats)
+                    </td>
+                    <td>
+                        <div class="w3-content w3-display-container slider" id="@item.RoomName.ToString()" style=" max-width:200px;  margin: auto;">
+
+                            @foreach (var image in Pictures)
+                            {
+                                if (item.RoomId == image.RoomId)
+                                {
+
+                                    <a href="@image.ImageUrl" data-lightbox="@item.RoomId" data-title="@item.RoomName">
+                                        <img class="mySlides" src="@image.ImageUrl" style="width:100%;" />
+                                    </a>
+
+                                }
+                                <a class="w3-btn-floating w3-display-left" onclick="plusDivs(this,-1)">&#10094;</a>
+                                <a class="w3-btn-floating w3-display-right" onclick="plusDivs(this,1)">&#10095;</a>
+
+                            }
+                        </div>
+
+
+
+                        </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.RoomId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.RoomId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RoomId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>
+
+
+
+<script src="/Scripts/admin-rooms-ip.js"></script>
+<script src="/Scripts/alert.js"></script>
+<script src="/Scripts/slideshow.js"></script>
+<script src="/Scripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
