@@ -37,6 +37,6 @@ namespace MyCinema.Models
 
         public System.Data.Entity.DbSet<MyCinema.Models.Timetable> Timetables { get; set; }
 
-        public System.Data.Entity.DbSet<MyCinema.Models.RoomPics> RoomPics { get; set; }
+       
     }
 }

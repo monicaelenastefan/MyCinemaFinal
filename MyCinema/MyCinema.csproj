@@ -156,7 +156,6 @@
     <Compile Include="Controllers\AddMovieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
-    <Compile Include="Controllers\RoomPicsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -169,7 +168,6 @@
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MyModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
-    <Compile Include="Models\RoomPics.cs" />
     <Compile Include="Models\Rooms.cs" />
     <Compile Include="Models\Timetable.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -280,12 +278,7 @@
     <Content Include="Views\Rooms\Delete.cshtml" />
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
-    <Content Include="Views\Rooms\Index.cshtml" />
-    <Content Include="Views\RoomPics\Create.cshtml" />
-    <Content Include="Views\RoomPics\Delete.cshtml" />
-    <Content Include="Views\RoomPics\Details.cshtml" />
-    <Content Include="Views\RoomPics\Edit.cshtml" />
-    <Content Include="Views\RoomPics\Index.cshtml" />
+    <Content Include="Views\Rooms\IndexAdmin.cshtml" />
     <Content Include="Views\Movies\Create.cshtml" />
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
@@ -297,6 +290,7 @@
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
