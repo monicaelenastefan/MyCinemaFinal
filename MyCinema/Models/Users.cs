@@ -50,7 +50,7 @@ namespace MyCinema.Models
 
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Confirm password and password do not match")]
+        
         public string ConfirmPassword { get; set; }
     }
 }

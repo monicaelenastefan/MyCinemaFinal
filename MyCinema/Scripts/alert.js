@@ -1,6 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // show the alert
-    setTimeout(function() {
-        $(".alert").alert('close');
-    }, 3000);
+   
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 3000);
+    
 });

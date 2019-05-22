@@ -15,13 +15,7 @@
 
 <div class="main">
     <h2 class="title">Admin | Movies</h2>
-    <div class="alert alert-danger">
-        Mesaj cand ceva nu este ok -> eroare. Dispar automat cu scriptul js
-    </div>
-    <div class="alert alert-success">
-        Mesaj cand ceva a descurs cu succes(modificarea filmului, stergerea unui
-        film, etc)
-    </div>
+   
     <div class="main-container">
       
         
@@ -29,16 +23,16 @@
                     <a class="buttons-movie" href="@Url.Action("Create", "Movies")" onclick="currentMenu()">
                         Add Movie
                     </a>
-                    <a class="buttons-movie" href="@Url.Action("DeleteMovies", "Movies")" onclick="currentMenu()">
-                        Delete Movie
-                    </a>
-
+                   
 
                 
                 </div>
 
             <table class="table">
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MovieId)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
@@ -48,12 +42,13 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Price)
                     </th>
-                   
+
                     <th>
                         @Html.DisplayNameFor(model => model.Duration)
                     </th>
-              
-                    <th>Options</th>
+
+                    <th>Delete</th>
+                    <th>Modify</th>
                 </tr>
 
                 <tbody>
@@ -88,9 +83,12 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
                         </td>
                     </tr>
                 }
@@ -104,6 +102,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/Scripts/script.js"></script>
-<script src="/Scripts/admin-movies-ip.js"></script>
+<script src="../Scripts/script.js"></script>
+<script src="../Scripts/admin-movies-ip.js"></script>
 <script src="../Scripts/alert.js"></script>

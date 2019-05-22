@@ -2,21 +2,39 @@
 
 @{
     ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet"
+      media="screen" />
+
 
 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
 {
     if (ViewBag.Message != null)
     {
-        <div class="alert alert-success">
-            <strong>Error!</strong>@ViewBag.Message
-        </div>
+<div class="alert-success">
+    @ViewBag.Message
+    @TempData["ErrorMessage"]
+</div>
     }
 }
 else
 {
+
     using (Html.BeginForm())
     {
+
+        <div class="alert alert-danger">
+            @ViewBag.Message
+            @TempData["ErrorMessage"]
+        </div>
+
+
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
@@ -24,13 +42,13 @@ else
             <div class="firstname-lastname-container">
                 <div class="firstname">
                     @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { placeholder = "First Name", @class = "firstname" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "firstname" })
+
                 </div>
 
                 <div class="lastname">
 
                     @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { placeholder = "Last Name", @class = "lastname" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "lastname" })
+
                 </div>
             </div>
 
@@ -38,15 +56,14 @@ else
             <div class="firstname-lastname-container">
 
                 @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { placeholder = "Email", @class = "lastname" } })
-                @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "lastname" })
-                @Html.ValidationMessage("EmailExist", new { @class = "lastname" })
+
 
             </div>
 
             <div class="firstname-lastname-container">
 
                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { placeholder = "Username", @class = "lastname" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "lastname" })
+
 
             </div>
 
@@ -55,33 +72,41 @@ else
             <div class="firstname-lastname-container">
 
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", @class = "lastname" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "lastname" })
+
 
             </div>
 
             <div class="firstname-lastname-container">
 
                 @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Confirm password", @class = "lastname" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "lastname" })
+
 
             </div>
 
-           
+
 
             <div class="button-container">
                 <input type="submit" value="Submit" class="button" />
             </div>
         </div>
-      
+
     }
 }
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="../Scripts/script.js"></script>
+
+    <script src="../Scripts/alert.js"></script>
 
 
 
 
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

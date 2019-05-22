@@ -10,73 +10,101 @@
 <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
 
 
-<div style="padding-left:2%;">
-    <h2>Delete</h2>
+<title>MyCinema | Movies</title>
 
-    <h3>Are you sure you want to delete this?</h3>
-    <hr />
-    <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+<div class="main">
+    <h2 class="title">Admin | Movies</h2>
 
-        <dd>
+    <div class="main-container">
 
-            <a href="@Model.Image" data-lightbox="gallery"><img id="myImg" src="@Model.Image" alt="@Model.Name" style="width:90px;height:110px;"></a>
+        <h3>Are you sure you want to delete this?</h3>
 
-        </dd>
+        <div class="buttons-top">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            @using (Html.BeginForm())
+            {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    <div class="btn btn-default"> @Html.ActionLink("Back to List", "IndexAdmin") </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MinimalAge)
-        </dt>
+                </div>
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.MinimalAge)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
 
         </div>
-    }
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </th>
+
+            </tr>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(model => model.MovieId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </td>
+                    <td>
+                        @if (@Model.Image != null)
+
+                        {
+                            string imageSource = $"data:image;base64,{Convert.ToBase64String(@Model.Image)}";
+
+                            <img src="@imageSource" style="width:90px;height:110px;" />
+                        }
+
+
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Price)
+                    </td>
+
+
+                </tr>
+                
+            </tbody>
+
+        </table>
+
+    </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="../Scripts/script.js"></script>
+<script src="../Scripts/admin-movies-ip.js"></script>
+<script src="../Scripts/alert.js"></script>
+

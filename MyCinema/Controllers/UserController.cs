@@ -23,7 +23,8 @@ namespace MyCinema.Controllers
         public ActionResult Registration([Bind(Exclude = "IsEmailVerified,ActivationCode")]Users user)
         {
             bool Status = false;
-            string message = "";
+            string message = null;
+            ViewBag.Message = message;
 
             if (ModelState.IsValid)
             {
@@ -31,11 +32,20 @@ namespace MyCinema.Controllers
                 var isExist = IsEmailExist(user.EmailID);
                 if (isExist)
                 {
-                    ModelState.AddModelError("EmailExist", "Email already exist");
+                    
+                    message = "Email already exists";
+                    ViewBag.Messgae = message;
+                    TempData["ErrorMessage"] = message;
                     return View();
                 }
                 #endregion
-
+                if (user.Password != user.ConfirmPassword)
+                {
+                    message = "Passwords do not match";
+                    ViewBag.Messgae = message;
+                    TempData["ErrorMessage"] = message;
+                    return View();
+                }
                 #region Generate Activation Code
                 user.ActivationCode = Guid.NewGuid();
                 #endregion
@@ -44,7 +54,13 @@ namespace MyCinema.Controllers
                 user.Password = Crypto.Hash(user.Password);
                 user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword);
                 #endregion
-
+                if(user.Password != user.ConfirmPassword)
+                {
+                    message = "Passwords do not match";
+                    ViewBag.Messgae = message;
+                    TempData["ErrorMessage"] = message;
+                    return View();
+                }
                 user.IsEmailVerified = false;
 
                 #region Save to Database
@@ -57,15 +73,17 @@ namespace MyCinema.Controllers
                     message = "Registration successfully done. Account activation link " +
                         "has been send to your email id: " + user.EmailID;
                     Status = true;
+                    
                 }
                 #endregion
             }
             else
             {
-                message = "Invalid Request";
+                message = "Invalid Request. ";
             }
-            ViewBag.Message = message;
+            ViewBag.Messgae = message;
             ViewBag.Status = Status;
+            TempData["ErrorMessage"] = message;
             return View(user);
         }
 

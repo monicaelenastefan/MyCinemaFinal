@@ -228,7 +228,7 @@ namespace MyCinema.Controllers
            
                 db.Movies.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexAdmin");
             
 
            
@@ -300,7 +300,7 @@ namespace MyCinema.Controllers
             {
                 db.Entry(movies).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexAdmin");
             }
             return View(movies);
         }
@@ -368,7 +368,7 @@ namespace MyCinema.Controllers
             Movies movies = db.Movies.Find(id);
             db.Movies.Remove(movies);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdmin");
         }
 
         
