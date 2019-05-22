@@ -104,6 +104,7 @@ namespace MyCinema.Controllers
         public ActionResult Login(UserLogin login, string ReturnUrl = "")
         {
             string message = "";
+            ViewBag.Message = message;
             using (MyModel dc = new MyModel())
             {
                 var v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
@@ -144,15 +145,18 @@ namespace MyCinema.Controllers
                     }
                     else
                     {
-                        message = "Invalid credential provide";
+                        message = "Invalid Password";
+                        
                     }
                 }
                 else
                 {
-                    message = "Invalid credential provide";
+                    message = "Invalid email";
+                    
                 }
             }
             ViewBag.Messgae = message;
+            TempData["ErrorMessage"] = message;
             return View();
         }
 
