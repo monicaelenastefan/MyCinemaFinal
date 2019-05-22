@@ -1,109 +1,62 @@
 ﻿@model IEnumerable<MyCinema.Models.Movies>
-
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MenuAdmin.cshtml";
-
+    Layout = "~/Views/Shared/_Menu.cshtml";
 }
 
-<link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
-<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
-<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
-
-<title>MyCinema | Movies</title>
 
 
-<div class="main">
-    <h2 class="title">Admin | Movies</h2>
-    <div class="alert alert-danger">
-        Mesaj cand ceva nu este ok -> eroare. Dispar automat cu scriptul js
-    </div>
-    <div class="alert alert-success">
-        Mesaj cand ceva a descurs cu succes(modificarea filmului, stergerea unui
-        film, etc)
-    </div>
-    <div class="main-container">
-      
-        
-                <div class="buttons-top">
-                    <a class="buttons-movie" href="@Url.Action("Create", "Movies")" onclick="currentMenu()">
-                        Add Movie
-                    </a>
-                    <a class="buttons-movie" href="@Url.Action("DeleteMovies", "Movies")" onclick="currentMenu()">
-                        Delete Movie
-                    </a>
+<link rel="stylesheet" type="text/css" href="../Stylesheets/style.css">
+<link rel="stylesheet" type="text/css" href="../Stylesheets/Movies.css">
 
+<body>
+    <p id="movies-title">Movies</p>
 
-                
+    <div class="body-main">
+
+        <div class="movies-body">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="movies-data-show">
+                    <div>
+                        @{
+                            var base64 = Convert.ToBase64String(item.Image);
+                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                        }
+                        <img src='@imgsrc' style="width:250px;height:390px" />
+                    </div>
+                    <div class="movie-name">
+                        <p> @Html.DisplayFor(modelItem => item.Name)</p>
+                    </div>
+                    <div class="movie-price">
+                        <p>@Html.DisplayFor(modelItem => item.Price) RON</p>
+                    </div>
+                    <div class="movie-book-now">
+                        <button class="movie-button-book-now">Book now</button>
+                    </div>
                 </div>
 
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Image)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Price)
-                    </th>
-                   
-                    <th>
-                        @Html.DisplayNameFor(model => model.Duration)
-                    </th>
-              
-                    <th>Options</th>
-                </tr>
+            }
 
-                <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MovieId)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @if (item.Image != null)
-
-                            {
-                                string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image)}";
-
-                                <img src="@imageSource" style="width:90px;height:110px;"/>
-                            }
-
-                        
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Duration)
-                        </td>
-
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
-                        </td>
-                    </tr>
-                }
-                    </tbody>
-
-            </table>
-       
+        </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/Scripts/script.js"></script>
-<script src="/Scripts/admin-movies-ip.js"></script>
-<script src="../Scripts/alert.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+</body>
+

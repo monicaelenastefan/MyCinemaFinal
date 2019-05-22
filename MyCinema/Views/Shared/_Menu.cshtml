@@ -1,30 +1,33 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet"
-          media="screen" />
-    <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css" />
-    <link media="screen" rel="stylesheet" type="text/css" href="/StyleSheets/Menu.css" />
-    <link rel="stylesheet" type="text/css" href="/Content/lightbox.css">
-    <link rel="stylesheet" type="text/css" href="/Content/lightbox.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link media="screen" rel="stylesheet" type="text/css" href="/Content/images.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../StyleSheets/Menu.css">
+
+
 
     <title>MyCinema | Home</title>
 </head>
 <body>
     <div class="layout">
         <div class="l-left">
-            <a class="toggle-menu topm1" href="#"><i class="material-icons">menu</i></a>
-            <a class="logo-menu" href="javascript:window.location.href=window.location.href">Admin Panel</a>
+            <a href="#" class="toggle-menu topm1"><i class="material-icons">menu</i></a>
+            <a href="@Url.Action("Index", "Home")" class="logo-menu">My Cinema</a>
             <div class="menu">
                 <a href="@Url.Action("Index", "Home")" class="menu-item" onclick="currentMenu(1)">
                     <img src="../../images/icon_home-1.svg" alt="" class="ico">
@@ -38,11 +41,11 @@
                     <img src="../../images/icon_products-1.svg" alt="" class="ico">
                     Movies
                 </a>
-                <a href="@Url.Action("Index", "Rooms")" class="menu-item" onclick="currentMenu(4)">
+                <a href="@Url.Action("Rooms", "CinemaRooms")" class="menu-item" onclick="currentMenu(4)">
                     <img src="../../images/icon_Invoices-1.svg" alt="" class="ico">
                     Cinema Rooms
                 </a>
-                <a href="@Url.Action("Index","Timetables")" class="menu-item" onclick="currentMenu(5)">
+                <a href="Program.html" class="menu-item" onclick="currentMenu(5)">
                     <img src="../../images/icon_calendar-1.svg" alt="" class="ico">
                     Program
                 </a>
@@ -83,10 +86,12 @@
 
 
             @RenderBody()
+
+
         </div>
     </div>
 
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -96,8 +101,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-    <script src="/Scripts/script.js"></script>
-    <script src="/Scripts/home.js"></script>
-    <script src="/Scripts/lightbox-plus-jquery.min.js"></script>
+    <script src="../../Scripts/script.js"></script>
+    <script src="../../Scripts/home.js"></script>
 </body>
 </html>
+

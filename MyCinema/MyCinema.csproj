@@ -290,12 +290,13 @@
     <Content Include="Views\Movies\Delete.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Movies\Edit.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\IndexAdmin.cshtml" />
     <Content Include="Scripts\lightbox-plus-jquery.min.map" />
     <Content Include="Scripts\lightbox.min.map" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
