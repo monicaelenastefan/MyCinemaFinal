@@ -11,7 +11,46 @@ body {
 .body-main {
     background-color: #f0f0f7;
 }
+.add-movie-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.add-movie-form {
+    display: block;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: center;
+}
+
+.movie-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30px;
+}
+
+
+
+
+
+
+.box {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0 0 5px 0;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.buttons-movie {
+    color: white;
+    background-color: #3381ff;
+    border-radius: 5px;
+    padding: 10px 40px;
+    border: none;
+    font-size: 13px;
+    margin: 10px;
+}
 #movies-title {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 25px;

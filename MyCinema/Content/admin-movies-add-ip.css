@@ -12,18 +12,17 @@
     justify-content: center;
 }
 
-.add-movie-form input {
-    width: 100%;
-}
+    .add-movie-form input {
+        width: 100%;
+    }
 
-.add-movie-form p {
-    margin: 0 0 5px 0;
-    font-size: 20px;
-    text-align: center;
-}
+    .add-movie-form p {
+        margin: 0 0 5px 0;
+        font-size: 20px;
+        text-align: center;
+    }
 
-.buttons-movie
-{
+.buttons-movie {
     color: white;
     background-color: #3381ff;
     border-radius: 5px;

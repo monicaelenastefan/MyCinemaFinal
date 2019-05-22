@@ -12,25 +12,14 @@ namespace MyCinema.Controllers
     public class HomeController : Controller
     {
 
-       
-      
-        // GET: Home
         public ActionResult Index(string name)
         {
-            MyModel db = new MyModel();
-
-            ViewBag.TotalUsers = db.Users.Count();
-            ViewBag.TotalMovies = db.Movies.Count();
-            ViewBag.TotalRooms = db.Rooms.Count();
-            //todo...
-            //ViewBag.TotalBookings = ...
-
             //Pune in ViewBag Email-ul utilizatorului conectat
             ViewBag.EmailID = Session["name"];
             String nume;
             nume = ViewBag.EmailID;
 
-          //MyModel db = new MyModel();
+            MyModel db = new MyModel();
 
             //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
             var usr = (from u in db.Users
@@ -49,6 +38,42 @@ namespace MyCinema.Controllers
             return View();
         }
 
+        // GET: Home
+        public ActionResult Admin(string name)
+        {
+            MyModel db = new MyModel();
+
+            ViewBag.TotalUsers = db.Users.Count();
+            ViewBag.TotalMovies = db.Movies.Count();
+            ViewBag.TotalRooms = db.Rooms.Count();
+            //todo...
+            //ViewBag.TotalBookings = ...
+
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
+
+
+            return View();
+        }
+
+        
 
         public ActionResult Settings()
         {

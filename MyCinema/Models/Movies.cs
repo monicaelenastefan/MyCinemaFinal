@@ -15,27 +15,21 @@ namespace MyCinema.Models
         [Display(Name = "Title")]
         public string Name { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public String Image { get; set; }
+        [Required]
+       
+        public byte[] Image { get; set; }
 
         [Required]
         [Range(1,100)]
      
         public double Price { get; set; }
 
-        [Required]
-        [Range(1,22)]
-        public int MinimalAge { get; set; }
 
         [Required]
-        [Display(Name = "Release date")]
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
+       
 
-
-        [Required]
         [Display(Name = "Duration")]
-        [DataType(DataType.Duration)]
-        public TimeSpan Duration { get; set; }
+       // [DataType(DataType.Duration)]
+        public string Duration { get; set; }
     }
 }

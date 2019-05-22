@@ -15,7 +15,7 @@ namespace MyCinema.Controllers
         [HttpGet]
         public ActionResult Registration()
         {
-            return View("Registration", "_Login");
+            return View();
         }
 
         [HttpPost]
@@ -53,8 +53,7 @@ namespace MyCinema.Controllers
                     dc.Users.Add(user);
                     dc.SaveChanges();
 
-                    SendVerificationLinkEmail(user.EmailID
-, user.ActivationCode.ToString());
+                    SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString());
                     message = "Registration successfully done. Account activation link " +
                         "has been send to your email id: " + user.EmailID;
                     Status = true;
@@ -96,7 +95,7 @@ namespace MyCinema.Controllers
 
         public ActionResult Login()
         {
-            return View("Login", "_Login");
+            return View();
         }
 
 
@@ -107,7 +106,7 @@ namespace MyCinema.Controllers
             string message = "";
             using (MyModel dc = new MyModel())
             {
-                Users v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
+                var v = dc.Users.Where(a => a.EmailID == login.EmailID).FirstOrDefault();
                 if (v != null)
                 {
                     if (string.Compare(Crypto.Hash(login.Password), v.Password) == 0)
@@ -126,12 +125,19 @@ namespace MyCinema.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
+                            if (v.EmailID == "tampu.andra@yahoo.ro")
+                        {
+                            Session["name"] = login.EmailID;
+                            if (Session["name"] != null)
+                                return RedirectToAction("Admin", "Home", new { EmailID = Session["name"].ToString() });
+                        }
+                        else
                         {
                             Session["name"] = login.EmailID;
                             if (Session["name"] != null)
                                 return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
 
-                            return RedirectToAction("Index", "Home");
+                            //   return RedirectToAction("Index", "Home");
 
                         }
 
@@ -220,7 +226,7 @@ namespace MyCinema.Controllers
 
         public ActionResult ForgotPassword()
         {
-            return View("ForgotPassword", "_Login");
+            return View();
         }
 
         [HttpPost]

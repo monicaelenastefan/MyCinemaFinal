@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MenuAdmin.cshtml";
+
 }
 
 <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
@@ -46,12 +48,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Price)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MinimalAge)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReleaseDate)
-                    </th>
+                   
                     <th>
                         @Html.DisplayNameFor(model => model.Duration)
                     </th>
@@ -63,27 +60,34 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MovieId)
+                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            
-                            <a href="@item.Image" data-lightbox="gallery"><img id="myImg" src="@item.Image" alt="@item.Name" style="width:90px;height:110px;"></a>
+                            @if (item.Image != null)
+
+                            {
+                                string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image)}";
+
+                                <img src="@imageSource" style="width:90px;height:110px;"/>
+                            }
+
+                        
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Price)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MinimalAge)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReleaseDate)
-                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Duration)
                         </td>
-                   
-                        <td >
+
+                        <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
                             @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })

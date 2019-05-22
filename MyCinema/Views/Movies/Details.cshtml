@@ -2,64 +2,68 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MenuAdmin.cshtml";
 }
+<link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
 
-    <div style="padding-left:2%;">
-        <h1 style="padding-left:5%;"> @Model.Name</h1>
-        <hr />
-
-
-      
-
-            <a href="@Model.Image" data-lightbox="gallery"><img id="myImg" src="@Model.Image" alt="@Model.Name" style="max-width:400px;"></a>
-            </td>
-      
-        <dl class="dl-horizontal">
+<div style="padding-left:2%;">
+    <h1 style="padding-left:5%;"> @Model.Name</h1>
+    <hr />
 
 
-            <dt>
-                Title
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.MinimalAge)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.MinimalAge)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ReleaseDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Duration)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Duration)
-            </dd>
-
-        </dl>
 
 
-    </div>
+    <a href="@Model.Image" data-lightbox="gallery"><img id="myImg" src="@Model.Image" alt="@Model.Name" style="max-width:400px;"></a>
+    </td>
+
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            Title
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimalAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimalAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+    </dl>
+
+
+</div>
 <p style="text-align:center;">
     @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
     @Html.ActionLink("Back to List", "Index")

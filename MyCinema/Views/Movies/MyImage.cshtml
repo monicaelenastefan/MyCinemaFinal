@@ -1,0 +1,18 @@
+﻿@model MyCinema.Models.Movies
+
+@{
+
+    if (ViewBag.Pic == 1)
+
+    {
+        if (Model.Image != null)
+
+        {
+            WebImage wi = new WebImage(Model.Picture1);
+
+            wi.Resize(700, 700, true, true);
+
+            wi.Write();
+
+        }
+    }

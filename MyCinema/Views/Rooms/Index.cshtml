@@ -3,18 +3,19 @@
 @{
 
     ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_MenuAdmin.cshtml";
     List<MyCinema.Models.RoomPics> Pictures = ViewBag.Images;
 
 }
-    <head>
-        <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
-        <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
-        <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
-        <link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+
+    <link href="http://www.w3schools.com/lib/w3.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
-    </head>
 
 <title>MyCinema | Rooms</title>
 
@@ -88,7 +89,7 @@
 
 
 
-                        </td>
+                    </td>
 
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.RoomId }) |
