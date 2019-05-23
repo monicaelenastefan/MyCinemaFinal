@@ -168,6 +168,7 @@
     <Compile Include="Models\ChangeAccountDetailsModel.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MyModel.cs" />
+    <Compile Include="Models\Reservations.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\RoomPics.cs" />
     <Compile Include="Models\Rooms.cs" />
@@ -297,6 +298,8 @@
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Timetables\DisplayProgram.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -203,9 +203,9 @@ namespace MyCinema.Controllers
             var vefifyUrl = "/User/" + emailFor + "/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, vefifyUrl);
 
-            var fromEmail = new MailAddress("monicaelenastefan@gmail.com", "Validation User");
+            var fromEmail = new MailAddress("diiadiana13@gmail.com", "Validation User");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "veveargost15";
+            var fromEmailPassword = "andradelia99";
 
             string subject = "";
             string body = "";
