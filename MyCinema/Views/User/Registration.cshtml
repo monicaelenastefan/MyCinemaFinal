@@ -15,13 +15,13 @@
 
 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
 {
-    if (ViewBag.Message != null)
-    {
+   
+    
 <div class="alert-success">
     @ViewBag.Message
     @TempData["ErrorMessage"]
 </div>
-    }
+    
 }
 else
 {

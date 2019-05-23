@@ -17,6 +17,25 @@ namespace MyCinema.Controllers
         // GET: Timetables
         public ActionResult Index()
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
             return View(db.Timetables.ToList());
@@ -25,6 +44,25 @@ namespace MyCinema.Controllers
         // GET: Timetables/Details/5
         public ActionResult Details(int? id)
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
             if (id == null)
@@ -42,6 +80,25 @@ namespace MyCinema.Controllers
         // GET: Timetables/Create
         public ActionResult Create()
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
             return View();
@@ -54,7 +111,25 @@ namespace MyCinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,MovieId,RoomId,Date,StartTime")] Timetable timetable)
         {
-            
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             if (ModelState.IsValid)
             {
                 db.Timetables.Add(timetable);
@@ -68,6 +143,25 @@ namespace MyCinema.Controllers
         // GET: Timetables/Edit/5
         public ActionResult Edit(int? id)
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
             if (id == null)
@@ -89,6 +183,25 @@ namespace MyCinema.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,MovieId,RoomId,Date,StartTime")] Timetable timetable)
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(timetable).State = EntityState.Modified;
@@ -101,6 +214,25 @@ namespace MyCinema.Controllers
         // GET: Timetables/Delete/5
         public ActionResult Delete(int? id)
         {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            //MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
             if (id == null)
