@@ -245,7 +245,7 @@ namespace MyCinema.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomId,RoomName,NrOfSeats")] Rooms rooms)
+        public ActionResult Edit([Bind(Include = "RoomId,RoomName,Image1,Image2,Image3,Image4")] Rooms rooms)
         {
             if (ModelState.IsValid)
             {
@@ -279,7 +279,7 @@ namespace MyCinema.Controllers
             Rooms rooms = db.Rooms.Find(id);
             db.Rooms.Remove(rooms);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdmin");
         }
 
         protected override void Dispose(bool disposing)

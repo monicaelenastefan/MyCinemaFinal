@@ -8,64 +8,69 @@
 <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
 <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet"
+      media="screen" />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<link media="screen" rel="stylesheet" type="text/css" href="../StyleSheets/admin-edit.css">
 
-    <div class="form-horizontal">
-        <h2>Edit</h2>
-        <h4>Movies</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MovieId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-       
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+<div class="main">
+    <h2 class="title">Edit Movie : Numele filmului</h2>
+    <div class="alert alert-danger">
+        Mesaj cand ceva nu este ok cu imputurile
     </div>
-}
+    <div class="main-container">
+        <form action="@Url.Action("Edit", "Movies")" method="POST" enctype="multipart/form-data" ">
+            @Html.AntiForgeryToken()
+            <div class="buttons-top">
+                <button class="buttons-movie" type="submit">Save</button>
+                <input class="buttons-movie" type="button" onclick="location.href='@Url.Action("IndexAdmin", "Movies")'" value="Discard" />
+            </div>
+            <div class="row-container">
+                <div class="main-panel">
+                    <p>Current Name:</p>
+                    <input type="text" disabled name="old-movie-name" value="@Html.DisplayFor(model => model.Name)">
+                    <p>Current Price:</p>
+                    <input type="text" disabled name="old-movie-price" value="@Html.DisplayFor(model => model.Price)">
+                    <p>Current Duration:</p>
+                    <input type="text" disabled name="old-movie-duration" value="@Html.DisplayFor(model => model.Duration)">
+                    <p class="go-down">Current Image:</p>
+                    @if (@Model.Image != null)
+
+                    {
+                        string imageSource = $"data:image;base64,{Convert.ToBase64String(@Model.Image)}";
+
+                        <img src="@imageSource" style="width:400px;height:300px;" />
+                    }
+
+                </div>
+                <div class="main-panel">
+                    <p>New Name:</p>
+                    <input type="text" name="Name">
+                    <p>New Price:</p>
+                    <input type="text" name="Price">
+                    <p>New Duration:</p>
+                    <input type="text" required class="timing" name="Duration" />
+                    <p>New Image:</p>
+                    <input type="file" accept="image/*" name="Image">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="../Scripts/timingfield.js"></script>
+<script src="../scripts-common/script.js"></script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

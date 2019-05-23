@@ -273,10 +273,10 @@ namespace MyCinema.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MovieId,Name,Image,Price,MinimalAge,ReleaseDate,Duration")] Movies movies)
+
+        public ActionResult Edit( Movies movies, string Name, HttpPostedFileBase Image, double Price, string Duration)
         {
-            
+
             //Pune in ViewBag Email-ul utilizatorului conectat
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -296,15 +296,53 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
-            if (ModelState.IsValid)
-            {
-                db.Entry(movies).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("IndexAdmin");
-            }
-            return View(movies);
-        }
+            string filename = "";
 
+            byte[] bytes;
+
+            int BytestoRead;
+
+            int numBytesRead;
+
+            if (Image != null)
+
+            {
+
+                filename = Path.GetFileName(Image.FileName);
+
+                bytes = new byte[Image.ContentLength];
+
+                BytestoRead = (int)Image.ContentLength;
+
+                numBytesRead = 0;
+
+                while (BytestoRead > 0)
+
+                {
+
+                    int n = Image.InputStream.Read(bytes, numBytesRead, BytestoRead);
+
+                    if (n == 0) break;
+
+                    numBytesRead += n;
+
+                    BytestoRead -= n;
+
+                }
+
+                movies.Image = bytes;
+            }  movies.Name = Name;
+                movies.Price = Price;
+                movies.Duration = Duration;
+                if (ModelState.IsValid)
+                {
+                    db.Entry(movies).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("IndexAdmin");
+                }
+                return View(movies);
+            }
+        
         // GET: Movies/Delete/5
         public ActionResult Delete(int? id)
         {

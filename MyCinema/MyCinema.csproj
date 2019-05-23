@@ -233,6 +233,7 @@
     <Content Include="Scripts\images.js" />
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\timingfield.js" />
+    <Content Include="StyleSheets\admin-edit.css" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\Menu.css" />

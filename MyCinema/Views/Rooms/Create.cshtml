@@ -24,9 +24,7 @@
 <body>
     <div class="main">
         <h2 class="title">Add Room</h2>
-        <div class="alert alert-danger">
-
-        </div>
+       
         <div class="add-movie-div">
             <form action="@Url.Action("Create", "Rooms")" method="POST" enctype="multipart/form-data" class="add-movie-form">
                 <p>Room Name</p>
@@ -40,7 +38,7 @@
                 <p>Room Image | 4</p>
                 <input type="file" accept="image/*" name="Image4">
                 <button class="buttons-movie" id="modal-button-add" type="submit">Add Room</button>
-                <button class="buttons-movie" type="button" onclick="location.href='admin-movies-ip.html'">Back to Movies</button>
+                <input class="buttons-movie" type="button" onclick="location.href='@Url.Action("IndexAdmin", "Rooms")'" value="Back to Rooms" />
             </form>
         </div>
     </div>
