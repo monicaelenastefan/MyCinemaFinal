@@ -167,6 +167,7 @@
     <Compile Include="Models\ChangeAccountDetailsModel.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\MyModel.cs" />
+    <Compile Include="Models\Reservations.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\Rooms.cs" />
     <Compile Include="Models\Timetable.cs" />
@@ -291,7 +292,6 @@
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

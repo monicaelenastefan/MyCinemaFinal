@@ -266,5 +266,20 @@ namespace MyCinema.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+       
+
+        public ActionResult DisplayProgram(MyModel model)
+        {
+            List<int> list_of_Movies_Id= new List<int>();
+            foreach(var item in model.Movies)
+            {
+                list_of_Movies_Id.Add(item.MovieId);
+            }
+            
+            ViewBag.data = list_of_Movies_Id;
+            return View();
+        }
     }
 }
