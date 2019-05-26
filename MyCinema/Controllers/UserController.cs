@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using MyCinema.Models;
 using System.Web.Security;
+using System.IO;
+
 
 namespace MyCinema.Controllers
 {
@@ -63,6 +65,8 @@ namespace MyCinema.Controllers
                 }
                 user.IsEmailVerified = false;
 
+                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinema\MyCinema\images\noimg.jpg");
+                user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())
                 {

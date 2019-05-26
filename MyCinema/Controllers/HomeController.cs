@@ -42,12 +42,28 @@ namespace MyCinema.Controllers
         public ActionResult Admin(string name)
         {
             MyModel db = new MyModel();
-            ViewBag.LastUser = db.Users.Max(p => p.UserId);
-
-            
+            int LastUserId = db.Users.Max(p => p.UserId);
+            int LastRoomId = db.Rooms.Max(p => p.RoomId);
+            int LastMovieId= db.Movies.Max(p => p.MovieId);
+            var LastUser = (from u in db.Users
+                       where u.UserId == LastUserId
+                            select u).FirstOrDefault();
+            ViewBag.LastUser = LastUser;
             ViewBag.TotalUsers = db.Users.Count();
             ViewBag.TotalMovies = db.Movies.Count();
             ViewBag.TotalRooms = db.Rooms.Count();
+
+            var LastRoom = (from u in db.Rooms
+                           where u.RoomId == LastRoomId
+                            select u).FirstOrDefault();
+
+            ViewBag.LastRoom = LastRoom;
+
+            var LastMovie = (from u in db.Movies
+                            where u.MovieId == LastMovieId
+                            select u).FirstOrDefault();
+
+            ViewBag.LastMovie = LastMovie;
             //todo...
             //ViewBag.TotalBookings = ...
 
