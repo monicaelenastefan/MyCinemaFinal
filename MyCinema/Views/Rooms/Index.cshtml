@@ -4,5 +4,76 @@
     Layout = "~/Views/Shared/_Menu.cshtml";
 }
 
-<h2>Index</h2>
 
+
+@model IEnumerable<MyCinema.Models.Rooms>
+
+
+<link rel="stylesheet" type="text/css" href="../Stylesheets/style.css">
+<link rel="stylesheet" type="text/css" href="../Stylesheets/Rooms.css">
+
+
+<body>
+
+    <div class="main">
+        <h2 class="title">Cinema Rooms</h2>
+
+        <div class="cinema-rooms-grid-container">
+
+            @foreach (var item in Model)
+            {
+                <div class="cinema-room">
+                    <h5><a> @Html.DisplayFor(modelItem => item.RoomName) </a></h5>
+
+                    <div class="slider-container w3-content w3-display-container">
+
+                        @if (item.Image1 != null)
+                        {
+                            <div class="slide">
+                                @{
+                                    var base641 = Convert.ToBase64String(item.Image1);
+                                    var imgsrc1 = string.Format("data:image/gif;base64,{0}", base641);
+
+
+                                }
+                                <img src='@imgsrc1' style="max-width:100%;max-height:100%" />
+                                <div class="badges-container w3-center w3-container w3-large w3-text-white w3-display-bottommiddle">
+                                    <span class="w3-badge badge w3-hover-white">
+                                    </span>
+                                </div>
+                            </div>
+                        }
+
+                        <!--
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <br>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+
+        </div>
+        -->
+                    </div>
+
+
+        
+                    </div>
+            }
+
+            </div>
+        </div>
+
+
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                    crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+</body>

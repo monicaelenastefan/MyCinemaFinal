@@ -42,7 +42,9 @@ namespace MyCinema.Controllers
         public ActionResult Admin(string name)
         {
             MyModel db = new MyModel();
+            ViewBag.LastUser = db.Users.Max(p => p.UserId);
 
+            
             ViewBag.TotalUsers = db.Users.Count();
             ViewBag.TotalMovies = db.Movies.Count();
             ViewBag.TotalRooms = db.Rooms.Count();

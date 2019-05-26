@@ -155,12 +155,28 @@ body {
             padding-left: 15px;
             margin-left: 10px;
             border-left: 1px solid #ddd;
+            
+            
         }
 
             .l-right .top-bar .right .user-menu .arrow {
                 margin: 0 5px;
                 margin-left: 12px;
             }
+
+.user-drop {
+    vertical-align: bottom;
+    text-decoration: none;
+    color: #333;
+    right: 0;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 10px;
+    padding-left: 15px;
+    margin-left: 10px;
+    border-left: 1px solid #ddd;
+    z-index: 5;
+}
 
 
 .l-right .main {
