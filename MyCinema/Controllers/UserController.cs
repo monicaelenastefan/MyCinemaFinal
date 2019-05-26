@@ -65,7 +65,7 @@ namespace MyCinema.Controllers
                 }
                 user.IsEmailVerified = false;
 
-                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinema\MyCinema\images\noimg.jpg");
+                byte[] array = System.IO.File.ReadAllBytes(@"D:\Github\MyCinemaFinal\MyCinema\images\noimg.jpg");
                 user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())

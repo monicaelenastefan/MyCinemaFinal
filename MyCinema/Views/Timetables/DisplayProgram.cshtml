@@ -9,13 +9,13 @@
     <h1 id="program-title">Program</h1>
     <div class="programs">
         <div class="buttons-top">
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.ToString("dd-MM-yyyy") })' ">@DateTime.Now.ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(1).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(1).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(2).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(2).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(3).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(3).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(4).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(4).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(5).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(5).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(6).ToString("dd-MM-yyyy") })' ">@DateTime.Now.AddDays(6).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now })' ">@DateTime.Now.ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(1) })' ">@DateTime.Now.AddDays(1).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(2) })' ">@DateTime.Now.AddDays(2).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(3) })' ">@DateTime.Now.AddDays(3).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(4) })' ">@DateTime.Now.AddDays(4).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(5) })' ">@DateTime.Now.AddDays(5).ToString("dddd, dd MMMM")</button>
+            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(6) })' ">@DateTime.Now.AddDays(6).ToString("dddd, dd MMMM")</button>
 
         </div>
 
