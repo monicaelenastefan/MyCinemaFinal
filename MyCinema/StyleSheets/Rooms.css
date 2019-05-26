@@ -1,4 +1,6 @@
-﻿h3 {
+﻿
+
+h3 {
     margin: 15px 0 !important;
 }
 
@@ -28,12 +30,10 @@
 
 .cinema-room {
     padding: 20px;
-    
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);*/
     transition: all 0.3s ease-in-out;
     flex: 33%;
     max-width: 33%;
-
 }
 
 h5 > a {
@@ -41,14 +41,10 @@ h5 > a {
 }
 
 .slide {
-    
-
-
-    height: 80%;
+    display: none;
     width: 100%;
-    vertical-align: middle;
+    height: 200px;
 }
-
 
     .slide:nth-child(1) {
         display: block;
@@ -71,19 +67,6 @@ h5 > a {
     display: inline !important;
 }
 
-.slide-image {
-    height: 250px;
-    width: 300px;
-    vertical-align: middle;
-}
-
-.cinema-slide-show {
-    grid-area: cinema-photos;
-    max-width: 300px;
-    max-height: 300px;
-    position: relative;
-    margin: auto;
-}
 .w3-badge:hover {
     background: white !important;
 }
@@ -220,7 +203,7 @@ body {
             display: inline-block;
             border: none;
             outline: none;
-            height: calc(55px - 2*14px);
+            height: calc(55px - 2 * 14px);
             font-size: 14px;
             font-weight: 600;
             margin-left: 7px;
@@ -331,6 +314,8 @@ body {
 
     .cinema-room {
         padding: 10px;
+        flex: 100%;
+        max-width: 100%;
     }
 
     .column {
@@ -354,6 +339,8 @@ body {
 
     .cinema-room {
         padding: 10px;
+        flex: 100%;
+        max-width: 100%;
     }
 
     .column {
