@@ -52,5 +52,7 @@ namespace MyCinema.Models
         [DataType(DataType.Password)]
         
         public string ConfirmPassword { get; set; }
+
+        public byte[] Image { get; set; }
     }
 }
