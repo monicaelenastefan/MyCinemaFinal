@@ -295,18 +295,14 @@
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Timetables\DisplayProgram.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <Content Include="Views\Rooms\BookTicket.cshtml" />
-=======
->>>>>>> parent of 3e0ff06... Admin settings(still working)
-=======
->>>>>>> parent of 7cbf3e7... Revert "Admin settings(still working)"
+
     <Content Include="Views\Rooms\Index.cshtml" />
     <Content Include="Views\Home\AdminSettings.cshtml" />
-=======
+
     <Content Include="Views\Timetables\BookTicket.cshtml" />
->>>>>>> f7b3c3f1d541f9d42e4b00ea1f1be7ceb867a704
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
