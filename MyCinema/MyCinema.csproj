@@ -294,7 +294,7 @@
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Timetables\DisplayProgram.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-    <Content Include="Views\Rooms\BookTicket.cshtml" />
+    <Content Include="Views\Timetables\BookTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

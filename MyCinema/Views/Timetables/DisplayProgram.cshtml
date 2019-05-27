@@ -36,10 +36,9 @@
                 </div>
                 @foreach (var hour in list)
                 {
-                    
-                    <div class="column-right">
-                        <button class="button-hour">@hour.ToString()</button>
-                  
+                    <div class="column-right"> 
+                        <button class="button-hour" onclick="location.href='@Url.Action("BookTicket", "Timetables")'">@hour.ToString()</button>
+                        
                     </div>
                 }
             </div>

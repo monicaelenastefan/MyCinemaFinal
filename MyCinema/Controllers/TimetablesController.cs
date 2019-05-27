@@ -268,7 +268,6 @@ namespace MyCinema.Controllers
         }
 
 
-       
 
         public ActionResult DisplayProgram(DateTime date)
         {
@@ -302,12 +301,23 @@ namespace MyCinema.Controllers
                         if(movie.Equals(model.Movies.Find(item.MovieId).Name))
                         
                             hours.Add(item.StartTime);
+                    ViewBag.RoomName=model.Rooms.Find(item.RoomId).RoomName;
+                    ViewBag.Price = model.Movies.Find(item.MovieId).Price;
+                    ViewBag.MovieName = movie;
                 }
-
+                
                 map.Add(movie, hours);
+                
             }
 
             ViewBag.map = map;
+
+            return View();
+        }
+
+        //[HttpPost]
+        public ActionResult BookTicket()
+        {
 
             return View();
         }
