@@ -284,7 +284,8 @@ namespace MyCinema.Controllers
                 
                 if(item.Date.ToString("dd-MM-yyyy").Equals(date.ToString("dd-MM-yyyy")))
                 {
-                    moviesToday.Add(model.Movies.Find(item.MovieId).Name);
+                    if(!moviesToday.Contains(model.Movies.Find(item.MovieId).Name))
+                        moviesToday.Add(model.Movies.Find(item.MovieId).Name);
                 }
             }
 

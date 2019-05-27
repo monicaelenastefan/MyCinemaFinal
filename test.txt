@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" type="text/css" th:href="@{//use.fontawesome.com/releases/v5.8.2/css/all.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i}">
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+    <link rel="stylesheet" type="text/css" th:href="@{//www.w3schools.com/w3css/4/w3.css}">
+    <link rel="stylesheet" th:href="@{/stylesheets/style.css}">
+    <link rel="stylesheet" href="../static/stylesheets/custom_room.css" th:href="@{/stylesheets/custom_room.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/dropDownNotification.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/comm.css}">
+
+    <title>Room</title>
+</head>
+<body>
+<div class="layout">
+    <div th:replace="common.html :: left(${0}, ${user})"></div>
+
+    <div class="l-right">
+        <div th:replace="common.html :: top(${user})"></div>
+        <div class="main">
+            <h2 class="title">Room Name</h2>
+            <div class="alert alert-danger" th:each="message : ${errorMessages}" th:text="${message}"></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="room-view">
+                        <!-- 13 x 7 -->
+                        <table class="room-view-table">
+                            <tr>
+                                <td class="screen-row" colspan="13">
+                                    <div class="screen-el">Screen</div>
+                                </td>
+                            </tr>
+
+                            <th:block th:each="row : ${#numbers.sequence(0, seats.size() - 1)}">
+                                <tr>
+                                    <th:block th:each="column : ${#numbers.sequence(0, seats.get(1).size() - 1)}">
+                                        <td>
+                                            <div class="chair"
+                                                 th:classappend="${seats.get(row).get(column)} == 1 ? booked : free"
+                                                 th:data-row="${row}" th:data-col="${column}"></div>
+                                        </td>
+                                    </th:block>
+                                </tr>
+                            </th:block>
+                        </table>
+                        <div class="room-view-legend">
+                            <div class="chair free"></div>
+                            Free <br>
+                            <div class="chair booked"></div>
+                            Booked <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="booked-already-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Seat is already booked.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="book-now-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="book" th:action="@{/book_ticket}" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <input type="hidden" th:name="screening-id" th:value="${screening.getId()}">
+                            <div class="form-group">
+                                <label>Movie:</label>
+                                <input type="text" th:name="movie_name" class="form-control"
+                                       th:value="${screening.getMovie().getTitle()}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Room:</label>
+                                <input type="text" th:name="room_name" class="form-control"
+                                       th:value="${screening.getRoom().getName()}" disabled>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col">
+                                    <label>Row:</label>
+                                    <input type="number" th:name="seat-row" id="seat_row" class="form-control" disabled>
+                                    <input hidden type="number" th:name="row-value" id="row-value" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <label>Column:</label>
+                                    <input type="number" th:name="seat-col" id="seat_col" class="form-control" disabled>
+                                    <input hidden type="number" th:name="column-value" id="column-value"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Price:</label>
+                                <input type="text" class="form-control"
+                                       th:value="'LEI' + ${screening.getMovie().getPrice()}" disabled>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Book ticket</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{//code.jquery.com/jquery-3.3.1.min.js}"></script>
+<script th:src="@{//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"></script>
+<script th:src="@{//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/scripts/script.js}"></script>
+<script th:src="@{/scripts/room.js}"></script>
+<script th:src="@{/scripts/dropDownNotification.js}"></script>
+<script th:src="@{/scripts/buttonAccount.js}"></script>
+</body>
+</html>
