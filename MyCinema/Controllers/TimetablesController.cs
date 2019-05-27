@@ -272,7 +272,22 @@ namespace MyCinema.Controllers
         public ActionResult DisplayProgram(DateTime date)
         {
             MyModel model = new MyModel();
-            if(date.Equals(null))
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+            var db = new MyModel();
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
+            if (date.Equals(null))
             {
                 date = DateTime.Now;
             }
@@ -318,7 +333,21 @@ namespace MyCinema.Controllers
         //[HttpPost]
         public ActionResult BookTicket()
         {
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+            var db = new MyModel();
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
 
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
             return View();
         }
     }
