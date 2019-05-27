@@ -5,43 +5,51 @@
     Layout = "~/Views/Shared/_Menu.cshtml";
 }
 
+<h2>DisplayProgram</h2>
+
+<h2>Program</h2>
+
 <div class="body-main">
     <h1 id="program-title">Program</h1>
     <div class="programs">
         <div class="buttons-top">
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now })' ">@DateTime.Now.ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(1) })' ">@DateTime.Now.AddDays(1).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(2) })' ">@DateTime.Now.AddDays(2).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(3) })' ">@DateTime.Now.AddDays(3).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(4) })' ">@DateTime.Now.AddDays(4).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(5) })' ">@DateTime.Now.AddDays(5).ToString("dddd, dd MMMM")</button>
-            <button class="button-day" onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now.AddDays(6) })' ">@DateTime.Now.AddDays(6).ToString("dddd, dd MMMM")</button>
-
+            <button class="button-day">Monday</button>
+            <button class="button-day">Tuesday</button>
+            <button class="button-day">Wednesday</button>
+            <button class="button-day">Thursday</button>
+            <button class="button-day">Friday</button>
+            <button class="button-day">Saturday</button>
+            <button class="button-day">Sunday</button>
         </div>
 
         <div class="headers-table">
             <p id="header-movie">Movie</p>
             <p id="header-hours">Screening Hours</p>
         </div>
-
-
-        @foreach (KeyValuePair<string, List<TimeSpan>> item in ViewBag.map)
+        @foreach (var id in ViewBag.data)
         {
-            List<TimeSpan> list = item.Value;
-            <div class="table-row">
-                <div class="column-left">
-                    <div class="information-play"></div>
-                        <p>@item.Key.ToString()</p>
+            if (Model.Timetables.Find(id))
+            {
 
-                </div>
-                @foreach (var hour in list)
-                {
-                    <div class="column-right"> 
-                        <button class="button-hour" onclick="location.href='@Url.Action("BookTicket", "Timetables")'">@hour.ToString()</button>
-                        
+                <div class="table-row">
+                    <div class="column-left">
+                        <div class="information-play"></div>
+
+                        <p>@Model.Movies.Find(id).Name</p>
+
                     </div>
-                }
-            </div>
+                    <div class="column-right">
+                        @foreach (var item in Model.Timetables)
+                        {
+                            if (id.MovieId == item.MovieId)
+                            {
+                                <button class="button-hour">@item.StartTime</button>
+                            }
+
+                        }
+                    </div>
+                </div>
+            }
         }
     </div>
 </div>

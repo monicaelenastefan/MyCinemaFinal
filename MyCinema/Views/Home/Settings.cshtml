@@ -19,16 +19,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../StyleSheets/style.css">
     <link rel="stylesheet" href="../StyleSheets/Settings.css">
-
-
     <title>My Cinema | Settings</title>
 </head>
 <body>
-    <h1 class="Title">Settings</h1>
     <div class="container">
 
         <div class="settingsContainer">
-
+            <h1 class="Title">Settings</h1>
             <div class="settings">
                 <div class="settingsLeftSide">
 
@@ -43,7 +40,6 @@
                         </div>
                         <div class="name">
                             <h3>@ViewBag.FirstName @ViewBag.LastName</h3>
-                            <p>user</p>
 
                         </div>
 
@@ -58,19 +54,16 @@
                             <h5>Last Name</h5>
                             <p>@ViewBag.LastName</p>
                         </div>
+
+                        <div class="details">
+                            <h5>Username</h5>
+                            <p>@ViewBag.UserName</p>
+                        </div>
+
                         <div class="details">
                             <h5>E-mail</h5>
                             <p>@ViewBag.EmailID</p>
                         </div>
-                        <div class="details">
-                            <h5>Phone number</h5>
-                            <p></p>
-                        </div>
-                        <div class="details">
-                            <h5>BirthDate</h5>
-                            <p></p>
-                        </div>
-
 
                     </div>
 
@@ -96,33 +89,20 @@
                         <div class="field">
                             @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
-                            <label name="settings">Email Adress</label>
+                            <label name="settings">Username</label>
                         </div>
-                        <div class="field">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
-                            <label name="settings">Phone Number</label>
-                        </div>
-                        <div class="field">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
-                            <label name="settings">Birthdate</label>
-                        </div>
-
-                        <div class="field">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
-                            <label name="settings">New Password</label>
-                        </div>
-
-
                         <div class="form-buttons-container">
 
-                            <input class="saveBtn" type="submit" value="Change profile" />
+                            <input class="saveBtn" type="submit" value="Save" />
+
 
                         </div>
 
                     }
+                    <br />
+                    <div class="form-buttons-container">
+                        <button class="saveBtn" onclick='window.location = "@Url.Action("Settings", "Home")";'>Discard</button>
+                    </div>
 
                 </div>
             </div>
