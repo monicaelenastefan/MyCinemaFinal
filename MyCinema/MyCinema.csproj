@@ -235,6 +235,7 @@
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\timingfield.js" />
     <Content Include="StyleSheets\admin-edit.css" />
+    <Content Include="StyleSheets\custom-room.css" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\Menu.css" />
@@ -291,8 +292,14 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
+    <Content Include="Views\Timetables\DisplayProgram.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\Home\AdminSettings.cshtml" />
+=======
+    <Content Include="Views\Timetables\BookTicket.cshtml" />
+>>>>>>> f7b3c3f1d541f9d42e4b00ea1f1be7ceb867a704
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
