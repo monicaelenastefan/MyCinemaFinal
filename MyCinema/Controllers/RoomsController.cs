@@ -19,26 +19,6 @@ namespace MyCinema.Controllers
         public ActionResult Index()
         {
             MyModel db = new MyModel();
-            ViewBag.EmailID = Session["name"];
-            String nume;
-            nume = ViewBag.EmailID;
-
-            //MyModel db = new MyModel();
-
-            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
-            var usr = (from u in db.Users
-                       where u.EmailID == nume
-                       select u).FirstOrDefault();
-
-            if (usr != null)
-            {
-                ViewBag.FirstName = usr.FirstName;
-                ViewBag.LastName = usr.LastName;
-                ViewBag.UserName = usr.Username;
-
-            }
-
-            
             var item = (from d in db.Rooms
                         select d).ToList();
             ViewData["Rooms"] = db.Rooms.ToList();

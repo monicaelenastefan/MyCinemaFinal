@@ -91,69 +91,10 @@ namespace MyCinema.Controllers
             return View();
         }
 
-        public ActionResult AdminSettings()
-        {
-            //Face acelasi lucru ca si mai sus, dar nu stiu daca e neaparat necesar.
-            ViewBag.EmailID = Session["name"];
-            String nume;
-            nume = ViewBag.EmailID;
-            MyModel db = new MyModel();
-            var usr = (from u in db.Users
-                       where u.EmailID == nume
-                       select u).FirstOrDefault();
-
-            if (usr != null)
-            {
-                ViewBag.FirstName = usr.FirstName;
-                ViewBag.LastName = usr.LastName;
-                ViewBag.UserName = usr.Username;
-
-            }
-
-            return View();
-        }
-
-        //Mergeeeeeeeeeee
-        [HttpPost]
-        public ActionResult AdminSettings(ChangeAccountDetailsModel model)
-        {
-            var message = "";
-            if (ModelState.IsValid)
-            {
-                MyModel dc = new MyModel();
-                MyModel db = new MyModel();
-                ViewBag.EmailID = Session["name"];
-                String nume;
-                nume = ViewBag.EmailID;
-                var usr = (from u in dc.Users
-                           where u.EmailID == nume
-                           select u).FirstOrDefault();
-
-                if (usr != null)
-                {
-                    usr.FirstName = model.FirstName;
-                    usr.LastName = model.LastName;
-                    usr.Username = model.Username;
-                    ViewBag.FirstName = usr.FirstName;
-                    ViewBag.LastName = usr.LastName;
-                    ViewBag.UserName = usr.Username;
-                    dc.Configuration.ValidateOnSaveEnabled = false;
-                    dc.SaveChanges();
-
-                }
-
-                else ViewBag.Status = "Nu a gasit email!";
-
-                return View();
-            }
-
-            return View();
-        }
+        
 
         public ActionResult Settings()
         {
-            
-
             //Face acelasi lucru ca si mai sus, dar nu stiu daca e neaparat necesar.
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -163,19 +104,11 @@ namespace MyCinema.Controllers
                        where u.EmailID == nume
                        select u).FirstOrDefault();
 
-
-
             if (usr != null)
             {
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
                 ViewBag.UserName = usr.Username;
-                if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
-                {
-                    ViewBag.UserType = "Administrator";
-                }
-                else
-                    ViewBag.UserType = "Normal User";
 
             }
 
@@ -206,13 +139,6 @@ namespace MyCinema.Controllers
                     ViewBag.FirstName = usr.FirstName;
                     ViewBag.LastName = usr.LastName;
                     ViewBag.UserName = usr.Username;
-                    if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
-                    {
-                        ViewBag.UserType = "Administrator";
-                    }
-                    else
-                        ViewBag.UserType = "Normal User";
-
                     dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 

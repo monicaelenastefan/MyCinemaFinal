@@ -215,7 +215,6 @@
     <Content Include="Content\jquery-3.3.1.min.map" />
     <Content Include="Content\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\cinema-rooms.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -295,14 +294,7 @@
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Timetables\DisplayProgram.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-
-    <Content Include="Views\Rooms\BookTicket.cshtml" />
-
-    <Content Include="Views\Rooms\Index.cshtml" />
-    <Content Include="Views\Home\AdminSettings.cshtml" />
-
     <Content Include="Views\Timetables\BookTicket.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
