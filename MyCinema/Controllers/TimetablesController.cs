@@ -270,45 +270,15 @@ namespace MyCinema.Controllers
 
        
 
-        public ActionResult DisplayProgram(DateTime date)
+        public ActionResult DisplayProgram(MyModel model)
         {
-            MyModel model = new MyModel();
-            if(date.Equals(null))
+            List<int> list_of_Movies_Id= new List<int>();
+            foreach(var item in model.Movies)
             {
-                date = DateTime.Now;
+                list_of_Movies_Id.Add(item.MovieId);
             }
             
-            List<string> moviesToday = new List<string>();
-            foreach (var item in model.Timetables)
-            {
-                
-                if(item.Date.ToString("dd-MM-yyyy").Equals(date.ToString("dd-MM-yyyy")))
-                {
-                    if(!moviesToday.Contains(model.Movies.Find(item.MovieId).Name))
-                        moviesToday.Add(model.Movies.Find(item.MovieId).Name);
-                }
-            }
-
-
-            var map = new Dictionary<string, List<TimeSpan>>();
-            
-            foreach (var movie in moviesToday)
-            {
-                List<TimeSpan> hours = new List<TimeSpan>();
-
-                foreach(var item in model.Timetables)
-                {
-                    if (item.Date.ToString("dd-MM-yyyy").Equals(date.ToString("dd-MM-yyyy")))
-                        if(movie.Equals(model.Movies.Find(item.MovieId).Name))
-                        
-                            hours.Add(item.StartTime);
-                }
-
-                map.Add(movie, hours);
-            }
-
-            ViewBag.map = map;
-
+            ViewBag.data = list_of_Movies_Id;
             return View();
         }
     }
