@@ -22,6 +22,10 @@
     <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
     <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
     <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="../../StyleSheets/Dropdown.css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -51,7 +55,7 @@
                     <img src="../../images/icon_calendar-1.svg" alt="" class="ico">
                     Program
                 </a>
-                <a href="@Url.Action("Settings", "Home")" class="menu-item" onclick="currentMenu(6)">
+                <a href="@Url.Action("AdminSettings", "Home")" class="menu-item" onclick="currentMenu(6)">
                     <img src="../../images/icon_setting.svg" alt="" class="ico">
                     Settings
                 </a>
@@ -64,22 +68,64 @@
                     <img alt="" class="icon" src="../images/icon_search.svg">
                     <input class="Search" id="input_search" placeholder="Search" type="text">
                 </form>
-                <div class="right">
-                    <img alt="" class="notif-ico" src="../images/icon_notification.svg" />
-                    <a href="@Url.Action("Settings", "Home")">
-                        <span>
-                            @ViewBag.FirstName @ViewBag.LastName
-                        </span>
-                        <img alt="" class="arrow" src="../images/icon_down-arrow-small.svg">
-                    </a>
-                </div>
-                <div class="right">
-                    @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-primary btn-sm"> Logout </button>
+             
+                <div class="right" style="padding-right: 30px;">
+                   
+                        <button type="button" class="btn" data-toggle="dropdown">
+                            <img alt="" class="notif-ico" src="../images/icon_notification.svg" />
+                        </button>
+                        <ul class="dropdown-menu scrollable-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                   
+                
+                    <div class="dropdown">
+                        <div>
 
-                    }
+                            <span>
+                                @ViewBag.FirstName @ViewBag.LastName
+                            </span>
+                            <img alt="" class="arrow" src="../images/icon_down-arrow-small.svg">
+                        </div>
+
+                        <div class="dropdown-content">
+                            <br />
+                            <div class="dropdown" style="padding-left: 10px;">
+
+                                <span>
+                                    <a href="@Url.Action("Settings", "Home")" style=" text-decoration:none;  color: black;">
+                                        <img alt="" class="notif-ico" src="../images/Settings.png" />
+                                        Settings
+                                    </a>
+                                </span>
+                            </div>
+
+
+                            @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-link" style="   color: black; text-decoration: none; align-items:left;">
+                                    <img alt="" class="notif-ico" src="../images/Logout.png" /> Logout
+                                </button>
+
+                            }
+                        </div>
+                    </div>
+
+
 
 
 
