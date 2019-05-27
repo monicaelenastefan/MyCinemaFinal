@@ -293,7 +293,10 @@
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Rooms\BookTicket.cshtml" />
+=======
+>>>>>>> parent of 3e0ff06... Admin settings(still working)
     <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
