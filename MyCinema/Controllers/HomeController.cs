@@ -77,6 +77,8 @@ namespace MyCinema.Controllers
 
         public ActionResult Settings()
         {
+            
+
             //Face acelasi lucru ca si mai sus, dar nu stiu daca e neaparat necesar.
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -86,11 +88,19 @@ namespace MyCinema.Controllers
                        where u.EmailID == nume
                        select u).FirstOrDefault();
 
+
+
             if (usr != null)
             {
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
                 ViewBag.UserName = usr.Username;
+                if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
+                {
+                    ViewBag.UserType = "Administrator";
+                }
+                else
+                    ViewBag.UserType = "Normal User";
 
             }
 
@@ -121,6 +131,13 @@ namespace MyCinema.Controllers
                     ViewBag.FirstName = usr.FirstName;
                     ViewBag.LastName = usr.LastName;
                     ViewBag.UserName = usr.Username;
+                    if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
+                    {
+                        ViewBag.UserType = "Administrator";
+                    }
+                    else
+                        ViewBag.UserType = "Normal User";
+
                     dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 
