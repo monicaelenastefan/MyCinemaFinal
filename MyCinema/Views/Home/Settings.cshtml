@@ -17,15 +17,16 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../StyleSheets/style.css">
-    <link rel="stylesheet" href="../StyleSheets/Settings.css">
+    <link href="~/StyleSheets/Settings.css" rel="stylesheet" />
+    <link href="~/StyleSheets/style.css" rel="stylesheet" />
     <title>My Cinema | Settings</title>
 </head>
 <body>
+    <h1 class="Title">Settings</h1>
     <div class="container">
 
         <div class="settingsContainer">
-            <h1 class="Title">Settings</h1>
+
             <div class="settings">
                 <div class="settingsLeftSide">
 
@@ -57,13 +58,13 @@
                         </div>
 
                         <div class="details">
-                            <h5>Username</h5>
-                            <p>@ViewBag.UserName</p>
+                            <h5>E-mail</h5>
+                            <p>@ViewBag.EmailID</p>
                         </div>
 
                         <div class="details">
-                            <h5>E-mail</h5>
-                            <p>@ViewBag.EmailID</p>
+                            <h5>Username</h5>
+                            <p>@ViewBag.UserName</p>
                         </div>
 
                     </div>
@@ -88,22 +89,21 @@
                         </div>
 
                         <div class="field">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Email", placeholder = "Enter your email", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
                             <label name="settings">Username</label>
                         </div>
+
+
                         <div class="form-buttons-container">
 
-                            <input class="saveBtn" type="submit" value="Save" />
+                            <input class="saveBtn" type="submit" value="Change Profile" />
 
 
                         </div>
 
                     }
                     <br />
-                    <div class="form-buttons-container">
-                        <button class="saveBtn" onclick='window.location = "@Url.Action("Settings", "Home")";'>Discard</button>
-                    </div>
 
                 </div>
             </div>
