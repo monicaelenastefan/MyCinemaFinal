@@ -1,6 +1,4 @@
-﻿@model IEnumerable<MyCinema.Models.Users> 
-
-
+﻿
 @{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_MenuAdmin.cshtml";
@@ -39,54 +37,79 @@
                     <p class="info-numbers">Coming soon</p>
                 </div>
             </div>
-            <div class="column-50">
-                <div class="display-last-updates">
-                    <div class="last-update-information">
-                        <h2>Last five reservations</h2>
-                        <p><img class="mini-image" src="../resources/images/john-doe.png"> Numele de utilizator</p>
-                        <p><img class="mini-image" src="../resources/images/john-doe.png"> Numele de utilizator</p>
-                        <p><img class="mini-image" src="../resources/images/john-doe.png"> Numele de utilizator</p>
-                        <p><img class="mini-image" src="../resources/images/john-doe.png"> Numele de utilizator</p>
-                        <p><img class="mini-image" src="../resources/images/john-doe.png"> Numele de utilizator</p>
-                        <h2>Last updates</h2>
-                        <div class="last-registered-user">
-                          @{  var base641 = Convert.ToBase64String(ViewBag.LastUser.Image);
-                              var imgsrc1 = string.Format("data:image/gif;base64,{0}", base641);
-                            <img src="@imgsrc1"  style="max-width:50px;max-height:50px">
+            <div class="big-container">
 
-                              }<p>
-                                <a href="REDIRECT SPRE ADMIN USERS cu search pe numele utilizatorului(sa apara utlimul utilizator inregistrat primu)">@ViewBag.LastUser.LastName @ViewBag.LastUser.FirstName</a> is the last
-                                <mark class="purple">registered user</mark>
-                            </p>
-                        </div>
-                        <div class="last-added">
-                            @{ var base642 = Convert.ToBase64String(ViewBag.LastRoom.Image1);
-                                var imgsrc2 = string.Format("data:image/gif;base64,{0}", base642);
-                                <img src="@imgsrc2" style="max-width:50px;max-height:50px">
-
-                                }
-                                <p>
-                                    <a href="REDIRECT SPRE ADMIN ROOMS cu search pe camera(sa apara camera prima)"> @ViewBag.LastRoom.RoomName</a> is the last
-                                    <mark class="purple">added room</mark>
-                                </p>
-                            </div>
-                        <div class="last-added">
-
-                            @{ var base643 = Convert.ToBase64String(ViewBag.LastMovie.Image);
-                                var imgsrc3 = string.Format("data:image/gif;base64,{0}", base643);
-                                <img src="@imgsrc3" style="max-width:50px;max-height:50px">
-
-                            }
-                            <p>
-                                <a href="REDIRECT SPRE ADMIN MOVIES cu search pe film(sa apara filmul primu)"> @ViewBag.LastMovie.Name</a> is the last
-                                <mark class="purple">added movie</mark>
-                            </p>
+                <div class="cinema-slide-show">
+                    <div class="slide">
+                        <div id="first-slide">
+                            <img src="../../images/cinema-room-1-1.jpg" class="slide-image">
+                            <div class="slide-text">Outside1</div>
                         </div>
                     </div>
+                    <div class="slide">
+                        <img src="../../images/cinema-room-1-2.jpg" class="slide-image">
+                        <div class="slide-text">Outside2</div>
+                    </div>
+                    <div class="slide">
+                        <img src="../../images/cinema-room-2-1.jpg" class="slide-image">
+                        <div class="slide-text">Inside1</div>
+                    </div>
+                    <div class="slide">
+                        <img src="../../images/cinema-room-2-2.jpg" class="slide-image">
+                        <div class="slide-text">Inside2</div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
                 </div>
-                <div class="display-right-information">
-                    <div class="right-info">
-                        <img class="right-image" src="../images/back.png">
+                <div id="cinema-articles">
+                    <div id="article1">
+                        <h4 class=title-article>IMAX</h4>
+                        <p class="p-title">
+                            IMAX - EXPERIENȚA CINEMATOGRAFICĂ DINCOLO DE LIMITELE IMAGINAȚIEI
+
+                        </p>
+                        <p class="p-text">
+
+                            IMAX este cea mai avansată tehnologie disponibilă publicului – prin care te simți în
+                            mijlocul acțiunii. Ecranul imens te transpune într-o altă galaxie, iar sunetul care
+                            zguduie pământul o te facă să îți bată inima mai repede, incat vei trăi o experiență
+                            cinematografică de neuitat.
+                        </p>
+                    </div>
+                    <div id="article2">
+                        <h4 class=title-article>4DX</h4>
+                        <p class="p-title">
+                            SIMTE PUTEREA CINEMATOGRAFULUI
+                        </p>
+                        <p class="p-text">
+                            Sala 4DX® este un loc unde filmul devine realitate. 4DX® este o tehnologie
+                            revoluționară, prima de acest fel din lume, pentru proiectarea celor mai mari
+                            producții de filme de la Hollywood in format 4D. Scaunele mobile și soluțiile
+                            ambientale de ultimă oră vor oferi spectatorilor o experiență cinematografică
+                            extremă care este plină de efecte speciale și care permite publicului sǎ devinǎ
+                            parte din film.
+                        </p>
+                    </div>
+                    <div id="article3">
+                        <h4 class=title-article>VIP</h4>
+                        <p class="p-title">
+                            VIP - DIN DRAGOSTE PENTRU CINEMA
+                        </p>
+                        <p class="p-text">
+                            Iubim filmele și, mai presus de orice, iubim să le vedem pe marele ecran. Departe de
+                            viețile atât de aglomerate și zgomotoase, în care suntem mereu grăbiți și obosiți,
+                            în sala de cinema ne deconectăm și pătrundem într-o lume specială, a cărei magie
+                            este reînnoită cu fiecare inovație tehnologică sau nou format de vizionare. Iar
+                            odată cu noul concept VIP de la Cinema City ParkLake - cină și film-, ești
+                            transformat chiar tu, spectatorul, în personajul principal.
+                        </p>
                     </div>
                 </div>
             </div>

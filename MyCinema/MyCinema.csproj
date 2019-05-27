@@ -215,6 +215,7 @@
     <Content Include="Content\jquery-3.3.1.min.map" />
     <Content Include="Content\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\cinema-rooms.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -235,7 +236,6 @@
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\timingfield.js" />
     <Content Include="StyleSheets\admin-edit.css" />
-    <Content Include="StyleSheets\custom-room.css" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\Menu.css" />
@@ -292,9 +292,9 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Shared\_MenuAdmin.cshtml" />
     <Content Include="Views\Movies\MyImage.cshtml" />
-    <Content Include="Views\Timetables\DisplayProgram.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
-    <Content Include="Views\Timetables\BookTicket.cshtml" />
+    <Content Include="Views\Rooms\BookTicket.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

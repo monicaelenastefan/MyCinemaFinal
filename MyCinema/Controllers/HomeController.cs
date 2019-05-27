@@ -42,28 +42,10 @@ namespace MyCinema.Controllers
         public ActionResult Admin(string name)
         {
             MyModel db = new MyModel();
-            int LastUserId = db.Users.Max(p => p.UserId);
-            int LastRoomId = db.Rooms.Max(p => p.RoomId);
-            int LastMovieId= db.Movies.Max(p => p.MovieId);
-            var LastUser = (from u in db.Users
-                       where u.UserId == LastUserId
-                            select u).FirstOrDefault();
-            ViewBag.LastUser = LastUser;
+
             ViewBag.TotalUsers = db.Users.Count();
             ViewBag.TotalMovies = db.Movies.Count();
             ViewBag.TotalRooms = db.Rooms.Count();
-
-            var LastRoom = (from u in db.Rooms
-                           where u.RoomId == LastRoomId
-                            select u).FirstOrDefault();
-
-            ViewBag.LastRoom = LastRoom;
-
-            var LastMovie = (from u in db.Movies
-                            where u.MovieId == LastMovieId
-                            select u).FirstOrDefault();
-
-            ViewBag.LastMovie = LastMovie;
             //todo...
             //ViewBag.TotalBookings = ...
 
@@ -95,6 +77,8 @@ namespace MyCinema.Controllers
 
         public ActionResult Settings()
         {
+            
+
             //Face acelasi lucru ca si mai sus, dar nu stiu daca e neaparat necesar.
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -104,11 +88,19 @@ namespace MyCinema.Controllers
                        where u.EmailID == nume
                        select u).FirstOrDefault();
 
+
+
             if (usr != null)
             {
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
                 ViewBag.UserName = usr.Username;
+                if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
+                {
+                    ViewBag.UserType = "Administrator";
+                }
+                else
+                    ViewBag.UserType = "Normal User";
 
             }
 
@@ -139,6 +131,13 @@ namespace MyCinema.Controllers
                     ViewBag.FirstName = usr.FirstName;
                     ViewBag.LastName = usr.LastName;
                     ViewBag.UserName = usr.Username;
+                    if (ViewBag.EmailID.Contains("tampu.andra@yahoo.ro"))
+                    {
+                        ViewBag.UserType = "Administrator";
+                    }
+                    else
+                        ViewBag.UserType = "Normal User";
+
                     dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 
