@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_MenuAdmin.cshtml";
 }
 <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
-<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
-<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+<link media="screen" rel="stylesheet" type="text/css" href="../Content/admin-menu-ip.css">
+<link media="screen" rel="stylesheet" type="text/css" href="../Content/admin-movies-ip.css">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
@@ -29,10 +29,10 @@
                 <button class="buttons-movie" type="submit">Save</button>
                 <input class="buttons-movie" type="button" onclick="location.href='@Url.Action("IndexAdmin", "Movies")'" value="Discard" />
             </div>
-            <div class="row-container">
-                <div class="main-panel">
+             <div class="row-container">
+                <div class="col no-gutters" >
                     <p>Current Name:</p>
-                    <input type="text" disabled name="old-movie-name" value="@Html.DisplayFor(model => model.Name)">
+                    <input type="text" disabled name="old-movie-name" value="@Html.DisplayFor(model => model.Name)" style="width:100%">
                     <p>Current Price:</p>
                     <input type="text" disabled name="old-movie-price" value="@Html.DisplayFor(model => model.Price)">
                     <p>Current Duration:</p>
@@ -43,11 +43,11 @@
                     {
                         string imageSource = $"data:image;base64,{Convert.ToBase64String(@Model.Image)}";
 
-                        <img src="@imageSource" style="width:400px;height:300px;" />
+                        <img src="@imageSource" class="old-image" />
                     }
 
                 </div>
-                <div class="main-panel">
+                <div class="col no-gutters">
                     <p>New Name:</p>
                     <input type="text" name="Name">
                     <p>New Price:</p>

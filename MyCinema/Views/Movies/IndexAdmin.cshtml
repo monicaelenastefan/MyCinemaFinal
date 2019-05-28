@@ -31,7 +31,7 @@
 
         </div>
 
-            <table class="table">
+            <table class="table-of-movies">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.MovieId)
@@ -54,7 +54,7 @@
                     <th>Modify</th>
                 </tr>
 
-                <tbody>
+               
                     @foreach (var item in Model)
                     {
                         <tr>
@@ -95,7 +95,7 @@
                             </td>
                         </tr>
                     }
-                </tbody>
+
 
             </table>
         }
