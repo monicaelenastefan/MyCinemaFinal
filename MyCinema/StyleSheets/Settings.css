@@ -36,7 +36,7 @@
     padding-bottom: 3%;
     grid-area: left;
     background-color: #ffffff;
-    border-right: 3px solid rgba(59, 134, 255, 0.616);
+  
     display: block;
     display: grid;
     grid-template-rows: 30% 70%;
@@ -125,6 +125,9 @@ img.profile, img.editProfile {
 
 
 .settingsRightSide {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-right:5%;
     grid-area: right;
     background-color: #ffffff;
 }
@@ -202,21 +205,12 @@ input.formField:placeholder-shown + label {
     cursor: text;
     max-width: 66.66%;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
     transform-origin: left bottom;
     transform: translate(0, 2.125rem) scale(1.5);
     font-size: 15x;
 }
 
-/**
-  * By default, the placeholder should be transparent. Also, it should 
-  * inherit the transition.
-  */
-.formField::-webkit-input-placeholder {
-    opacity: 0;
-    transition: inherit;
-}
 
 /**
   * Show the placeholder when the input is focused.
