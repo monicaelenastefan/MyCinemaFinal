@@ -317,21 +317,24 @@ namespace MyCinema.Controllers
                         
                             hours.Add(item.StartTime);
                     TempData["RoomName"]=model.Rooms.Find(item.RoomId).RoomName.ToString();
+                    ViewBag.room = model.Rooms.Find(item.RoomId).RoomName.ToString();
                     TempData["Price"] = model.Movies.Find(item.MovieId).Price.ToString();
+                    ViewBag.price = model.Movies.Find(item.MovieId).Price.ToString();
                     TempData["MovieName"] = movie;
+                    ViewBag.time = item.StartTime;
                 }
                 
                 map.Add(movie, hours);
-                
+                ViewBag.movie = movie;
             }
-
+            ViewBag.date = date;
             ViewBag.map = map;
 
             return View();
         }
 
-        //[HttpPost]
-        public ActionResult BookTicket()
+        [HttpPost]
+        public ActionResult BookTicket(string row,string column)
         {
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -346,8 +349,24 @@ namespace MyCinema.Controllers
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
                 ViewBag.UserName = usr.Username;
+                ViewBag.email = usr.EmailID;
 
             }
+            Reservations reservation = new Reservations
+            {
+                Email=ViewBag.email,
+                Movie = ViewBag.movie,
+                Room = ViewBag.room,
+                Day = ViewBag.date,
+                Hour = ViewBag.time,
+                Row = Int32.Parse(row),
+                Column = Int32.Parse(column),
+                Price = ViewBag.price
+            };
+
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
             return View();
         }
     }
