@@ -23,9 +23,9 @@
     <title>My Cinema | Settings</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="width:100%; height:auto; min-width: 90%;" >
 
-        <div class="settingsContainer">
+        <div class="settingsContainer" >
             <h1 class="Title">Settings</h1>
             <div class="settings">
                 <div class="settingsLeftSide">
@@ -84,28 +84,28 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "" })
                         <div class="field">
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "Enter your first name", value = "@ViewBag.FirstName.toString()", @class = "formField" } })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "First Name", value = "@ViewBag.FirstName.toString()", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "formField" })
-                            <label name="settings">First Name</label>
+                            <label name="settings"></label>
                         </div>
 
                         <div class="field">
-                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "Enter your last name", @class = "formField" } })
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "Last Name", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "formField" })
-                            <label name="settings">Last Name</label>
+                            <label name="settings"></label>
 
                         </div>
 
                         <div class="field">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { type = "email", name = "Email", placeholder = "Enter your Email", @class = "formField" } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { type = "email", name = "Email", placeholder = "Email Address", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "formField" })
-                            <label name="settings">Email Address</label>
+                            <label name="settings"> </label>
                         </div>
 
                         <div class="field">
-                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { type = "tel", pattern = "([0-9]{4}) [0-9]{3} [0-9]{3}", name = "PhoneNumber", placeholder = "format: 0722 222 222", @class = "formField" } })
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { type = "tel", pattern = "([0-9]{4}) [0-9]{3} [0-9]{3}", name = "PhoneNumber", placeholder = "Phone Number", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "formField" })
-                            <label name="settings">Phone Number</label>
+                            <label name="settings"></label>
                         </div>
 
                         /*  <div class="field">
@@ -117,18 +117,17 @@
                         <div class="field">
                             <input class="formField text-box single-line" data-val="true" data-val-date="The field BirthDay must be a date." data-val-required="The BirthDay field is required." id="BirthDay" name="BirthDay" placeholder="Enter your BirthDay" type="date" value="@bday.ToString("yyyy-MM-dd")" />
                             <span class="field-validation-valid formField" data-valmsg-for="BirthDay" data-valmsg-replace="true"></span>
-                            <label name="settings">Birthdate</label>
+                            <label name="settings" style="  color: gray;   font-size: 15x;">Birthdate</label>
                         </div>
  
                         <div class="field">
-                            @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { name = "NewPassword", placeholder = "Enter your new password", @class = "formField" } })
+                            @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { name = "NewPassword", placeholder = "New Password", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "formField" })
-                            <label name="settings">New Password</label>
+                            <label name="settings"></label>
                         </div>
 
-                        <div class="form-buttons-container" style="align-content:center">
-                            <div></div>
-                            <div></div>
+                        <div class="form-buttons-container">
+                          
                             <input class="saveBtn" type="submit" value="Change profile" />
 
                         </div>
