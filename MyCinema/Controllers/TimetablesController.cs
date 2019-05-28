@@ -333,8 +333,8 @@ namespace MyCinema.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult BookTicket(string row,string column)
+        [HttpGet]
+        public ActionResult BookTicket()
         {
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -352,6 +352,12 @@ namespace MyCinema.Controllers
                 ViewBag.email = usr.EmailID;
 
             }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BookTicket(string row,string column)
+        {
             Reservations reservation = new Reservations
             {
                 Email=ViewBag.email,
