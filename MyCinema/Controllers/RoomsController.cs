@@ -256,39 +256,50 @@ namespace MyCinema.Controllers
             return View(rooms);
         }
 
-        // GET: Rooms/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Rooms rooms = db.Rooms.Find(id);
-            if (rooms == null)
-            {
-                return HttpNotFound();
-            }
-            return View(rooms);
-        }
 
-        // POST: Rooms/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete()
         {
-            Rooms rooms = db.Rooms.Find(id);
-            db.Rooms.Remove(rooms);
-            db.SaveChanges();
             return RedirectToAction("IndexAdmin");
         }
 
-        protected override void Dispose(bool disposing)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> RoomIdDelete)
         {
-            if (disposing)
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
             {
-                db.Dispose();
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
             }
-            base.Dispose(disposing);
+
+            List<Rooms> list = db.Rooms.Where(x => RoomIdDelete.Contains(x.RoomId)).ToList();
+            foreach (Rooms item in list)
+            {
+                db.Rooms.Remove(item);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("IndexAdmin");
+
         }
+
     }
+
+
+
 }

@@ -34,7 +34,7 @@
             <table class="table-of-movies">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.MovieId)
+                       Number
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
@@ -54,13 +54,13 @@
                     <th>Modify</th>
                 </tr>
 
-               
-                    @foreach (var item in Model)
-                    {
+               @{  int var = 1;
+                   foreach (var item in Model)
+                   {
                         <tr>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.MovieId)
+                               @var
                             </td>
 
                             <td>
@@ -94,8 +94,10 @@
                                 @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
                             </td>
                         </tr>
-                    }
 
+                       var++;
+                   }
+                   }
 
             </table>
         }
