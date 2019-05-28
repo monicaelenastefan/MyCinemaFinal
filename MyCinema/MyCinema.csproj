@@ -240,6 +240,7 @@
     <Content Include="StyleSheets\Login.css" />
     <Content Include="StyleSheets\Menu.css" />
     <Content Include="StyleSheets\Movies.css" />
+    <Content Include="StyleSheets\Program.css" />
     <Content Include="StyleSheets\Rooms.css" />
     <Content Include="StyleSheets\Settings.css" />
     <Content Include="StyleSheets\SignUp.css" />
