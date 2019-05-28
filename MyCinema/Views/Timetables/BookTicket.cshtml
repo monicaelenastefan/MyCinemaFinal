@@ -321,25 +321,57 @@
         </div>
     </div>
 
-    <div class="modal" id="myModal" >
-                <div class="modal-body">
-                    <p>Movie</p>
-                    <p>@ViewBag.MovieName</p>
-                    Room
-                    <p>@ViewBag.RoomName</p>
-                    Row
-                    <p id="row"></p>
-                    Column
-                    <p id="column"></p>
-                    Price
-                    <p>@ViewBag.Price</p>
-                </div>
-
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
-                    <a href="#" class="btn btn-success">Submit</a>
-                </div>
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <p class="p">Movie:</p>
+            <p class="parag"> @TempData["MovieName"]</p>
+            <p class="p">Room:</p>
+            <p class="parag"> @TempData["RoomName"]</p>
+            <p class="p">Row:</p>
+            <p id="row" class="parag"></p>
+            <p class="p">Column:</p>
+            <p id="column" class="parag"></p>
+            <p class="p">Price:</p>
+            <p class="parag"> @TempData["Price"]</p>
+        </div>
     </div>
+
+    <style>
+        .p{
+            font-size: 13px;
+        }
+
+        .parag{
+
+        }
+        
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 30px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 25%;
+            height: 50%;
+        }
+
+    </style>
 
 
 </div>
