@@ -15,7 +15,7 @@
 }
 
     .room-view-table .chair.free {
-        background: #3c85fd;
+        background: #494658;
         cursor: pointer;
     }
 
@@ -51,11 +51,11 @@
 }
 
     .room-view-legend .chair.free {
-        background: #3c85fd;
+        background: #494658;
     }
 
     .room-view-legend .chair.booked {
-        background: #968c8d;
+        background: #B0AFC8;
     }
 
     .room-view-legend .chair.sold {
