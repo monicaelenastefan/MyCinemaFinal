@@ -106,9 +106,12 @@ namespace MyCinema.Controllers
 
             if (usr != null)
             {
+                
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
-                ViewBag.UserName = usr.Username;
+                ViewBag.Email = usr.EmailID;
+                ViewBag.PhoneNumber = usr.PhoneNumber;
+                ViewBag.BirthDay = usr.BirthDay;
 
             }
 
@@ -120,25 +123,44 @@ namespace MyCinema.Controllers
         public ActionResult Settings(ChangeAccountDetailsModel model)
         {
             var message = "";
-            if (ModelState.IsValid)
-            {
+            ViewBag.LastName = "Invalid model...";
+          
                 MyModel dc = new MyModel();
                 MyModel db = new MyModel();
-                ViewBag.EmailID = Session["name"];
+                ViewBag.Email = Session["name"];
                 String nume;
-                nume = ViewBag.EmailID;
+                nume = ViewBag.Email;
                 var usr = (from u in dc.Users
                            where u.EmailID == nume
                            select u).FirstOrDefault();
-
+                ViewBag.LastName = "User not found...";
                 if (usr != null)
                 {
-                    usr.FirstName = model.FirstName;
-                    usr.LastName = model.LastName;
-                    usr.Username = model.Username;
+                    if(model.FirstName != null)
+                        usr.FirstName = model.FirstName;
+                    if(model.LastName != null)
+                     usr.LastName = model.LastName;
+
+                    usr.BirthDay = model.BirthDay;
+                    
+                    if (model.Email != null)
+                        usr.EmailID = model.Email;
+                    if (model.PhoneNumber != null)
+                        usr.PhoneNumber = model.PhoneNumber;
+                if (model.NewPassword != null)
+                {
+                    usr.Password =Crypto.Hash(model.NewPassword);
+                }
+
+
+
                     ViewBag.FirstName = usr.FirstName;
                     ViewBag.LastName = usr.LastName;
-                    ViewBag.UserName = usr.Username;
+                    ViewBag.Email = usr.EmailID;
+                    ViewBag.PhoneNumber = usr.PhoneNumber;
+                    ViewBag.BirthDay = usr.BirthDay;
+                    Session["name"] = usr.EmailID;
+
                     dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 
@@ -147,9 +169,7 @@ namespace MyCinema.Controllers
                 else ViewBag.Status = "Nu a gasit email!";
 
                 return View();
-            }
-
-            return View();
+       
         }
 
 

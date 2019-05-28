@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Settings";
-    Layout = "~/Views/Shared/_Menu.cshtml";
+    Layout = "/Views/Shared/_Menu.cshtml";
 }
 
 
@@ -12,13 +12,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="../StyleSheets/Settings.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../StyleSheets/style.css">
-    <link rel="stylesheet" href="../StyleSheets/Settings.css">
+   
 
 
     <title>My Cinema | Settings</title>
@@ -44,6 +43,10 @@
                             <h3>@ViewBag.FirstName @ViewBag.LastName</h3>
 
                         </div>
+                        @{ 
+                            DateTime bday =  ViewBag.BirthDay;
+
+                        }
 
                     </div>
                     <div class="details-part">
@@ -58,13 +61,18 @@
                         </div>
 
                         <div class="details">
-                            <h5>Username</h5>
-                            <p>@ViewBag.UserName</p>
+                            <h5>E-mail</h5>
+                            <p>@ViewBag.Email</p>
                         </div>
 
                         <div class="details">
-                            <h5>E-mail</h5>
-                            <p>@ViewBag.EmailID</p>
+                            <h5>Phone</h5>
+                            <p>@ViewBag.PhoneNumber</p>
+                        </div>
+
+                        <div class="details">
+                            <h5>Birthdate</h5>
+                            <p>@bday.ToString("dd/MM/yyyy")</p>
                         </div>
 
                     </div>
@@ -76,7 +84,7 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "" })
                         <div class="field">
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "Enter your first name", @class = "formField" } })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { type = "text", name = "LastName", placeholder = "Enter your first name", value = "@ViewBag.FirstName.toString()", @class = "formField" } })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "formField" })
                             <label name="settings">First Name</label>
                         </div>
@@ -89,22 +97,45 @@
                         </div>
 
                         <div class="field">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { type = "text", name = "Username", placeholder = "Enter your username", @class = "formField" } })
-                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "formField" })
-                            <label name="settings">Username</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { type = "email", name = "Email", placeholder = "Enter your Email", @class = "formField" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "formField" })
+                            <label name="settings">Email Address</label>
                         </div>
-                        <div class="form-buttons-container">
 
-                            <input class="saveBtn" type="submit" value="Save" />
+                        <div class="field">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { type = "tel", pattern = "([0-9]{4}) [0-9]{3} [0-9]{3}", name = "PhoneNumber", placeholder = "format: 0722 222 222", @class = "formField" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "formField" })
+                            <label name="settings">Phone Number</label>
+                        </div>
 
+                        /*  <div class="field">
+                              @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { name = "BirthDay", placeholder = "Enter your BirthDay",value="@model.BirthDay", @class = "formField" } })
+                              @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "formField" })
+                              <label name="settings">Birthdate</label>
+                          </div>
+                          */
+                        <div class="field">
+                            <input class="formField text-box single-line" data-val="true" data-val-date="The field BirthDay must be a date." data-val-required="The BirthDay field is required." id="BirthDay" name="BirthDay" placeholder="Enter your BirthDay" type="date" value="@bday.ToString("yyyy-MM-dd")" />
+                            <span class="field-validation-valid formField" data-valmsg-for="BirthDay" data-valmsg-replace="true"></span>
+                            <label name="settings">Birthdate</label>
+                        </div>
+ 
+                        <div class="field">
+                            @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { name = "NewPassword", placeholder = "Enter your new password", @class = "formField" } })
+                            @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "formField" })
+                            <label name="settings">New Password</label>
+                        </div>
+
+                        <div class="form-buttons-container" style="align-content:center">
+                            <div></div>
+                            <div></div>
+                            <input class="saveBtn" type="submit" value="Change profile" />
 
                         </div>
 
                     }
                     <br />
-                    <div class="form-buttons-container">
-                        <button class="saveBtn" onclick='window.location = "@Url.Action("Settings", "Home")";'>Discard</button>
-                    </div>
+                  
 
                 </div>
             </div>

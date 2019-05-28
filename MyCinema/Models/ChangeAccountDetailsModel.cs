@@ -16,7 +16,17 @@ namespace MyCinema.Models
         [Required(ErrorMessage = "Last Name is required.", AllowEmptyStrings = false)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Username is required.", AllowEmptyStrings = false)]
-        public string Username { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+        [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
+        public string NewPassword { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime BirthDay { get; set; }
     }
 }
