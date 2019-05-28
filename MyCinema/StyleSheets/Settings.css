@@ -245,9 +245,10 @@ input.formField:not(:focus):not(:placeholder-shown) + label {
 .form-buttons-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: ". . . discardBtn saveBtn ";
+    grid-template-areas: 'menu menu main right right right' 
+                         'menu menu footer footer footer footer';
     border: none;
-    align-self:center;
+    align-self: center;
 }
 
 .discardBtn {
@@ -263,7 +264,7 @@ input.formField:not(:focus):not(:placeholder-shown) + label {
 
 .saveBtn {
 
-    grid-area: saveBtn;
+    grid-area: main;
     background-color: #43425D;
     border: none;
     padding: 5%;
