@@ -34,7 +34,7 @@ namespace MyCinema.Controllers
                 var isExist = IsEmailExist(user.EmailID);
                 if (isExist)
                 {
-                    
+
                     message = "Email already exists";
                     ViewBag.Messgae = message;
                     TempData["ErrorMessage"] = message;
@@ -64,8 +64,8 @@ namespace MyCinema.Controllers
                     return View();
                 }
                 user.IsEmailVerified = false;
-             
-                byte[] array = System.IO.File.ReadAllBytes(@"D:\work_visualStudio\GitHub\MyCinemaFinal\MyCinema\images\john-doe.png");
+
+                byte[] array = System.IO.File.ReadAllBytes(@"C:\Users\Ana\source\repos\MyCinemaFinal\MyCinema\images\noimg.jpg");
                 user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())
@@ -77,7 +77,7 @@ namespace MyCinema.Controllers
                     message = "Registration successfully done. Account activation link " +
                         "has been send to your email id: " + user.EmailID;
                     Status = true;
-                    
+
                 }
                 #endregion
             }
@@ -168,13 +168,13 @@ namespace MyCinema.Controllers
                     else
                     {
                         message = "Invalid Password";
-                        
+
                     }
                 }
                 else
                 {
                     message = "Invalid email";
-                    
+
                 }
             }
             ViewBag.Messgae = message;

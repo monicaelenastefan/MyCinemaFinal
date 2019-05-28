@@ -116,9 +116,9 @@ namespace MyCinema.Controllers
             return View(movies);
         }
 
-
+        
        
-        // GET: Movies/Create
+        [HttpGet]
         public ActionResult Create()
         {
             //Pune in ViewBag Email-ul utilizatorului conectat
@@ -147,6 +147,8 @@ namespace MyCinema.Controllers
         // POST: Movies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+            
         [HttpPost]
        
         public ActionResult Create( string Name, HttpPostedFileBase Image, double Price, string Hours, string Minutes, string Seconds)
@@ -230,8 +232,6 @@ namespace MyCinema.Controllers
                 db.SaveChanges();
                 return RedirectToAction("IndexAdmin");
             
-
-           
         }
 
         // GET: Movies/Edit/5

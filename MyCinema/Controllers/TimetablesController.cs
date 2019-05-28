@@ -268,7 +268,7 @@ namespace MyCinema.Controllers
         }
 
 
-
+        [HttpGet]
         public ActionResult DisplayProgram(DateTime date)
         {
             MyModel model = new MyModel();
@@ -316,9 +316,9 @@ namespace MyCinema.Controllers
                         if(movie.Equals(model.Movies.Find(item.MovieId).Name))
                         
                             hours.Add(item.StartTime);
-                    ViewBag.RoomName=model.Rooms.Find(item.RoomId).RoomName;
-                    ViewBag.Price = model.Movies.Find(item.MovieId).Price;
-                    ViewBag.MovieName = movie;
+                    TempData["RoomName"]=model.Rooms.Find(item.RoomId).RoomName.ToString();
+                    TempData["Price"] = model.Movies.Find(item.MovieId).Price.ToString();
+                    TempData["MovieName"] = movie;
                 }
                 
                 map.Add(movie, hours);
