@@ -18,118 +18,90 @@
 <title>MyCinema | Rooms</title>
 
 <div class="main">
-    <h2 class="title">Admin | Rooms</h2>
+    <h2 class="title">Admin | Cinema-rooms</h2>
    
     <div class="main-container">
 
 
-
+        @using (Html.BeginForm("Delete", "Rooms", FormMethod.Post))
+        {
         <div class="buttons-top">
-            <a class="buttons-movie" href="@Url.Action("Create", "Rooms" )" onclick="currentMenu()">
+            <a class="buttons-movie" href="@Url.Action("Create", "Rooms")" onclick="currentMenu()">
                 Add Room
             </a>
-            
 
 
+            <button class="buttons-movie" id="modal-button-add" type="submit">Delete</button>
 
         </div>
 
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RoomName)
-                </th>
-
-                <th>
-                    Image1
-                </th>
-
-                <th>
-                    Image2
-                </th>
-
-                <th>
-                    Image3
-                </th>
-                <th>
-                    Image4
-                </th>
-                <th>Delete</th>
-                <th>Modify</th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+            <table  class="table-of-movies">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomName)
-                    </td>
+                    <th>
+                        Number
+                    </th>
 
-                    <td>
-                        @if (item.Image1 != null)
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoomName)
+                    </th>
 
-                        {
-                            string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image1)}";
+                    <th>
+                        Image1
+                    </th>
 
-                            <img src="@imageSource" style="width:90px;height:110px;" />
-                        }
-
-
-                    </td>
-
-                    <td>
-                        @if (item.Image2 != null)
-
-                        {
-                            string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image2)}";
-
-                            <img src="@imageSource" style="width:90px;height:110px;" />
-                        }
-
-
-                    </td>
-
-                    <td>
-                        @if (item.Image3 != null)
-
-                        {
-                            string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image3)}";
-
-                            <img src="@imageSource" style="width:90px;height:110px;" />
-                        }
-
-
-                    </td>
-
-                    <td>
-                        @if (item.Image4 != null)
-
-                        {
-                            string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image4)}";
-
-                            <img src="@imageSource" style="width:90px;height:110px;" />
-                        }
-
-
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.RoomId })
-
-
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.RoomId })
-                    </td>
+                   
+                    <th>Delete</th>
+                    <th>Modify</th>
                 </tr>
-            }
 
-        </table>
+                @{  int var1 = 1;
+
+                    foreach (var item in Model)
+                    {
+
+                    <tr>
+                        <td>
+                            @var1
+                        </td> 
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoomName)
+                        </td>
+
+                        <td>
+                            @if (item.Image1 != null)
+
+                            {
+                                string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image1)}";
+
+                                <img src="@imageSource" style="width:90px;height:110px;" />
+                            }
 
 
-    </div>
+                        </td>
+
+                       
+
+                        <td>
+
+                            <input type="checkbox" name="RoomIdDelete" id="RoomIdDelete" value="@item.RoomId" />
+
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.RoomId })
+                        </td>
+                    </tr>
+
+                            var1++;
+                        }
+                    }
+
+            </table>
+
+        }
+        </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

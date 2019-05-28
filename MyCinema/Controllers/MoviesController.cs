@@ -376,16 +376,7 @@ namespace MyCinema.Controllers
             db.SaveChanges();
 
             return RedirectToAction("IndexAdmin");
-           // if (id == null)
-         //   {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-         //   }
-        //    Movies movies = db.Movies.Find(id);
-       //     if (movies == null)
-         //   {
-       //         return HttpNotFound();
-       //     }
-       //     return View(movies);
+          
         }
 
         // POST: Movies/Delete/5
