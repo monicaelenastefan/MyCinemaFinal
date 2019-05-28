@@ -242,6 +242,7 @@ namespace MyCinema.Controllers
             ViewBag.EmailID = Session["name"];
             String nume;
             nume = ViewBag.EmailID;
+            ViewBag.MovieId = id;
 
             //MyModel db = new MyModel();
 
@@ -273,16 +274,16 @@ namespace MyCinema.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-
-        public ActionResult Edit( Movies movies, string Name, HttpPostedFileBase Image, double Price, string Duration)
+        public ActionResult Edit(string Name, double Price, string Duration, HttpPostedFileBase Image)
         {
+
 
             //Pune in ViewBag Email-ul utilizatorului conectat
             ViewBag.EmailID = Session["name"];
             String nume;
             nume = ViewBag.EmailID;
 
-            //MyModel db = new MyModel();
+            MyModel db = new MyModel();
 
             //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
             var usr = (from u in db.Users
@@ -296,6 +297,15 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
+
+
+            int MovieId = (int)TempData["MovieId"];
+            var MovieData = (from u in db.Movies
+                             where u.MovieId == MovieId
+                             select u).FirstOrDefault();
+
+
+
             string filename = "";
 
             byte[] bytes;
@@ -305,7 +315,6 @@ namespace MyCinema.Controllers
             int numBytesRead;
 
             if (Image != null)
-
             {
 
                 filename = Path.GetFileName(Image.FileName);
@@ -330,19 +339,26 @@ namespace MyCinema.Controllers
 
                 }
 
-                movies.Image = bytes;
-            }  movies.Name = Name;
-                movies.Price = Price;
-                movies.Duration = Duration;
-                if (ModelState.IsValid)
-                {
-                    db.Entry(movies).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("IndexAdmin");
-                }
-                return View(movies);
+
+                MovieData.Image = bytes;
+
             }
-        
+            if (Name != null)
+                MovieData.Name = Name;
+
+            if( Price > 0.0)
+             MovieData.Price = Price;
+            if (Duration != null)
+                MovieData.Duration = Duration;
+
+            db.Configuration.ValidateOnSaveEnabled = false;
+            db.SaveChanges();
+
+            return RedirectToAction("IndexAdmin");
+
+
+        }
+
         // GET: Movies/Delete/5
         [HttpPost]
         public ActionResult Delete(IEnumerable<int> MovieIdDelete)
