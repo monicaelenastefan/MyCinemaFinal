@@ -65,7 +65,7 @@ namespace MyCinema.Controllers
                 }
                 user.IsEmailVerified = false;
 
-                byte[] array = System.IO.File.ReadAllBytes(@"C:\Users\Ana\source\repos\MyCinemaFinal\MyCinema\images\noimg.jpg");
+                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinemaFinal\MyCinema\images\noimg.jpg");
                 user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())
@@ -148,7 +148,7 @@ namespace MyCinema.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
-                            if (v.EmailID == "popa.albertflavian@gmail.com")
+                            if (v.EmailID == "tampu.andra@yahoo.ro")
                         {
                             Session["name"] = login.EmailID;
                             if (Session["name"] != null)
