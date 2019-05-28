@@ -30,18 +30,15 @@
             <div class="settings">
                 <div class="settingsLeftSide">
 
-                    <div class="image-details">
+                    <div class="image-details" style="display:flex;">
                         <div class="image-part">
 
                             <img src="../images/john-doe.png" alt="" class="profile">
 
                         </div>
-                        <div class="nameContainerProfile">
-
-                        </div>
-                        <div class="name">
+                       
+                        <div class="name" style="float:left;">
                             <h3>@ViewBag.FirstName @ViewBag.LastName</h3>
-
                         </div>
                         @{ 
                             DateTime bday =  ViewBag.BirthDay;
@@ -49,7 +46,7 @@
                         }
 
                     </div>
-                    <div class="details-part">
+                    <div class="details-part" >
                         <div class="details">
                             <h5>First Name</h5>
                             <p>@ViewBag.FirstName</p>
@@ -117,7 +114,7 @@
                         <div class="field">
                             <input class="formField text-box single-line" data-val="true" data-val-date="The field BirthDay must be a date." data-val-required="The BirthDay field is required." id="BirthDay" name="BirthDay" placeholder="Enter your BirthDay" type="date" value="@bday.ToString("yyyy-MM-dd")" />
                             <span class="field-validation-valid formField" data-valmsg-for="BirthDay" data-valmsg-replace="true"></span>
-                            <label name="settings" style="  color: gray;   font-size: 15x;">Birthdate</label>
+                            <label name="settings" style="  color: gray;   font-size: 16px; font-style: normal;">Birthdate</label>
                         </div>
  
                         <div class="field">
