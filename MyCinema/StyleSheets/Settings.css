@@ -247,6 +247,7 @@ input.formField:not(:focus):not(:placeholder-shown) + label {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: ". . . discardBtn saveBtn ";
     border: none;
+    align-self:center;
 }
 
 .discardBtn {
@@ -261,28 +262,29 @@ input.formField:not(:focus):not(:placeholder-shown) + label {
 }
 
 .saveBtn {
+
     grid-area: saveBtn;
-    background-color: #3B86FF;
+    background-color: #43425D;
     border: none;
     padding: 5%;
     border-radius: 6%;
     color: white;
     margin-left: 7%;
     margin-right: 15%;
+   
 }
 
     .saveBtn:hover, .discardBtn:hover {
-        background-color: rgba(59, 134, 255, 0.856);
+        background-color: #43424D;
     }
 
     .saveBtn:active, .discardBtn:active {
-        background-color: #0F62E4;
+        background-color: #43425D;
     }
 
     .saveBtn:disabled {
-        background-color: rgba(59, 134, 255, 0.507);
+        background-color: #43425D;
     }
-
 
 
 

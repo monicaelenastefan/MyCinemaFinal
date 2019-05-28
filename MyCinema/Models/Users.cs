@@ -41,6 +41,14 @@ namespace MyCinema.Models
         [MinLength(8, ErrorMessage = "Minimum 8 characters required")]
         public string Password { get; set; }
 
+        [Display(Name ="Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public String PhoneNumber { get; set; }
+
+        [Display(Name ="Birthday")]
+        [DataType(DataType.Date)]
+        public DateTime BirthDay { get; set; }
+
         public bool IsEmailVerified { get; set; }
 
         public Guid ActivationCode { get; set; }

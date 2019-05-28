@@ -44,7 +44,7 @@ namespace MyCinema.Controllers
                 if (user.Password != user.ConfirmPassword)
                 {
                     message = "Passwords do not match";
-                    ViewBag.Messgae = message;
+                    ViewBag.Message = message;
                     TempData["ErrorMessage"] = message;
                     return View();
                 }
@@ -59,13 +59,13 @@ namespace MyCinema.Controllers
                 if(user.Password != user.ConfirmPassword)
                 {
                     message = "Passwords do not match";
-                    ViewBag.Messgae = message;
+                    ViewBag.Message = message;
                     TempData["ErrorMessage"] = message;
                     return View();
                 }
                 user.IsEmailVerified = false;
-
-                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinema\MyCinema\images\noimg.jpg");
+             
+                byte[] array = System.IO.File.ReadAllBytes(@"D:\work_visualStudio\GitHub\MyCinemaFinal\MyCinema\images\john-doe.png");
                 user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())
@@ -85,7 +85,7 @@ namespace MyCinema.Controllers
             {
                 message = "Invalid Request. ";
             }
-            ViewBag.Messgae = message;
+            ViewBag.Message = message;
             ViewBag.Status = Status;
             TempData["ErrorMessage"] = message;
             return View(user);
@@ -148,7 +148,7 @@ namespace MyCinema.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
-                            if (v.EmailID == "tampu.andra@yahoo.ro")
+                            if (v.EmailID == "popa.albertflavian@gmail.com")
                         {
                             Session["name"] = login.EmailID;
                             if (Session["name"] != null)

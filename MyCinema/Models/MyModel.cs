@@ -7,6 +7,7 @@ namespace MyCinema.Models
 
     public partial class MyModel : DbContext
     {
+      
         public MyModel()
             : base("name=MyModel")
         {
@@ -18,6 +19,7 @@ namespace MyCinema.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
             modelBuilder.Entity<Users>()
                 .Property(e => e.FirstName)
                 .IsUnicode(false);
