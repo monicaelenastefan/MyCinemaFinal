@@ -344,14 +344,15 @@ namespace MyCinema.Controllers
             }
         
         // GET: Movies/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> MovieIdDelete)
         {
             //Pune in ViewBag Email-ul utilizatorului conectat
             ViewBag.EmailID = Session["name"];
             String nume;
             nume = ViewBag.EmailID;
 
-            //MyModel db = new MyModel();
+            MyModel db = new MyModel();
 
             //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
             var usr = (from u in db.Users
@@ -365,49 +366,30 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
-            if (id == null)
+
+            List<Movies> list= db.Movies.Where(x => MovieIdDelete.Contains(x.MovieId)).ToList();
+            foreach(Movies item in list)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Movies.Remove(item);
             }
-            Movies movies = db.Movies.Find(id);
-            if (movies == null)
-            {
-                return HttpNotFound();
-            }
-            return View(movies);
+
+            db.SaveChanges();
+
+            return RedirectToAction("IndexAdmin");
+           // if (id == null)
+         //   {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+         //   }
+        //    Movies movies = db.Movies.Find(id);
+       //     if (movies == null)
+         //   {
+       //         return HttpNotFound();
+       //     }
+       //     return View(movies);
         }
 
         // POST: Movies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //Pune in ViewBag Email-ul utilizatorului conectat
-
-            //Pune in ViewBag Email-ul utilizatorului conectat
-            ViewBag.EmailID = Session["name"];
-            String nume;
-            nume = ViewBag.EmailID;
-
-            //MyModel db = new MyModel();
-
-            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
-            var usr = (from u in db.Users
-                       where u.EmailID == nume
-                       select u).FirstOrDefault();
-
-            if (usr != null)
-            {
-                ViewBag.FirstName = usr.FirstName;
-                ViewBag.LastName = usr.LastName;
-                ViewBag.UserName = usr.Username;
-
-            }
-            Movies movies = db.Movies.Find(id);
-            db.Movies.Remove(movies);
-            db.SaveChanges();
-            return RedirectToAction("IndexAdmin");
-        }
+   
 
         
 

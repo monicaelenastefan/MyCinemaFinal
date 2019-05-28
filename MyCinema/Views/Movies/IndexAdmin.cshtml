@@ -17,16 +17,19 @@
     <h2 class="title">Admin | Movies</h2>
    
     <div class="main-container">
-      
-        
-                <div class="buttons-top">
-                    <a class="buttons-movie" href="@Url.Action("Create", "Movies")" onclick="currentMenu()">
-                        Add Movie
-                    </a>
-                   
 
-                
-                </div>
+        @using (Html.BeginForm("Delete", "Movies", FormMethod.Post))
+        {
+        <div class="buttons-top">
+            <a class="buttons-movie" href="@Url.Action("Create", "Movies")" onclick="currentMenu()">
+                Add Movie
+            </a>
+
+            <button class="buttons-movie" id="modal-button-add" type="submit">Delete</button>
+
+
+
+        </div>
 
             <table class="table">
                 <tr>
@@ -52,50 +55,50 @@
                 </tr>
 
                 <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MovieId)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MovieId)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @if (item.Image != null)
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @if (item.Image != null)
 
-                            {
-                                string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image)}";
+                                {
+                                    string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image)}";
 
-                                <img src="@imageSource" style="width:90px;height:110px;"/>
-                            }
+                                    <img src="@imageSource" style="width:90px;height:110px;" />
+                                }
 
-                        
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Duration)
-                        </td>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
 
-                        <td>
-                            @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Duration)
+                            </td>
 
-                        </td>
+                            <td>
+                                <input type="checkbox" name="MovieIdDelete" id="MovieIdDelete" value="@item.MovieId" />
 
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
-                        </td>
-                    </tr>
-                }
-                    </tbody>
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MovieId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
 
             </table>
-       
+        }
     </div>
 </div>
 
