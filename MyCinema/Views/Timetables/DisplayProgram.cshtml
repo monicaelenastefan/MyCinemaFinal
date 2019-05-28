@@ -4,7 +4,7 @@
     ViewBag.Title = "DisplayProgram";
     Layout = "~/Views/Shared/_Menu.cshtml";
 }
-
+<link rel="stylesheet" type="text/css" href="../StyleSheets/Program.css">
 <div class="body-main">
     <h1 id="program-title">Program</h1>
     <div class="programs">
@@ -31,14 +31,14 @@
             <div class="table-row">
                 <div class="column-left">
                     <div class="information-play"></div>
-                        <p>@item.Key.ToString()</p>
+                    <p>@item.Key.ToString()</p>
 
                 </div>
                 @foreach (var hour in list)
                 {
-                    <div class="column-right"> 
+                    <div class="column-right">
                         <button class="button-hour" onclick="location.href='@Url.Action("BookTicket", "Timetables")'">@hour.ToString()</button>
-                        
+
                     </div>
                 }
             </div>
