@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="~/StyleSheets/custom-room.css" rel="stylesheet" />
 <link href="~/StyleSheets/style.css" rel="stylesheet" />
+<link href="~/StyleSheets/Program.css" rel="stylesheet" />
 <title>IP</title>
 
 
@@ -569,28 +570,121 @@
     <div class="modal" id="myModal">
         <div class="modal-content">
             <p class="p">Movie:</p>
-            <p class="parag"> @TempData["MovieName"]</p>
+            <input class="ir" type="text" value="@TempData["MovieName"]" readonly />
+
             <p class="p">Room:</p>
-            <p class="parag"> @TempData["RoomName"]</p>
-            <p class="p">Row:</p>
-            <p id="row" class="parag"></p>
-            <p class="p">Column:</p>
-            <p id="column" class="parag"></p>
+            <input class="ir" type="text" value="@TempData["RoomName"]" readonly />
+
+            <div class="place">
+                <p class="row">Row:</p>
+                <input type="text" id="row1" class="ir" value="@TempData["Row"]" readonly />
+      
+                <p class="column">Column:</p>
+                <input type="text" id="column" class="ic" value="@TempData["Column"]" readonly />
+
+            </div>
             <p class="p">Price:</p>
-            <p class="parag"> @TempData["Price"]</p>
+            <input class="ir" type="text" value="@TempData["Price"]" readonly />
+
+            <hr />
+            <div class="buttons">
+                <button class="button1">close</button>
+                <button class="button2">Book ticket</button>
+            </div>
         </div>
     </div>
 
     <style>
-        .p{
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 2em 0;
+            padding: 0;
+        }
+        .p {
             font-size: 13px;
         }
 
-        .parag{
+        .parag {
+        }
+
+        .place {
+            display: grid;
+        }
+
+        .row {
+            font-size: 13px;
+            grid-row: 1;
+            grid-column: 1;
+            margin-left: 1%;
+        }
+
+        .ir {
+            background-color: #F0EFF5;
+            width: 110%;
+            
+        }
+        input[type=text], select, textarea {
+            width: 102%;
+            padding: 12px;
+            border: 0.7px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            height : 2%;
+        }
+
+        .column {
+            font-size: 13px;
+            grid-row: 1;
+            grid-column: 2;
+            grid-gap: 2px;
+            margin-left:10%;
+        }
+
+        .ic {
+            background-color: #F0EFF5;
+            grid-row: 2;
+            grid-column: 2;
+            width: 2%;
+            margin-left:10%;
+            }
+
+        .buttons {
+            display: flex;
+            margin-left: 50%;
+            width:300px;
 
         }
-        
 
+        .button2 {
+            border-radius: 5px;
+            background-color: #B4B2FB;
+            color : white;
+            font-size: 15px;
+            padding: 5px 13px 5px 13px;
+            border: 0.1px solid #8F8CAC;
+            margin: 2px 0 2px 20px;
+            height: 30px;
+            font-size: 10px;
+        }
+
+        .button1 {
+            border-radius: 5px;
+            background-color: #9B98B6;
+            color: white;
+            font-size: 15px;
+            padding: 5px 13px 5px 13px;
+            border: 0.1px solid #8F8CAC;
+            margin: 1px 0 2px 20px;
+            height: 30px;
+            font-size: 10px;
+        }
+      
+      
+       
         /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
@@ -612,10 +706,9 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 25%;
-            height: 50%;
+            width: 27%;
+            height: 62%;
         }
-
     </style>
 
 
@@ -627,12 +720,12 @@
 
     var btn = document.getElementById("myBtn");
 
-    btn.onclick = function() {
+    btn.onclick = function () {
         modal.style.display = "block";
     }
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
-        modal.style.display = "none";
+            modal.style.display = "none";
         }
     }
 
@@ -642,17 +735,14 @@
 <script>
 
     var table = document.getElementById("table"), rIndex, cIndex;
-    for (var i = 0; i < table.rows.length; i++)
-    {
-        for (var j = 0; j < table.rows[i].cells.length; j++)
-        {
-            table.rows[i].cells[j].onclick = function()
-            {
+    for (var i = 0; i < table.rows.length; i++) {
+        for (var j = 0; j < table.rows[i].cells.length; j++) {
+            table.rows[i].cells[j].onclick = function () {
                 rIndex = this.parentElement.rowIndex;
-                cIndex = this.cellIndex+1;
+                cIndex = this.cellIndex + 1;
                 console.log(rIndex + ' ' + cIndex);
-                document.getElementById('row').innerHTML = rIndex;
-                document.getElementById('column').innerHTML = cIndex;
+                document.getElementById("row1").value = rIndex;
+                document.getElementById('column').value = cIndex;
             }
         }
     }
