@@ -232,50 +232,25 @@ namespace MyCinema.Controllers
         }
 
         // GET: Timetables/Delete/5
-        public ActionResult Delete(int? id)
+    
+
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> idDelete)
         {
             //Pune in ViewBag Email-ul utilizatorului conectat
-            ViewBag.EmailID = Session["name"];
-            String nume;
-            nume = ViewBag.EmailID;
+          
 
-            //MyModel db = new MyModel();
-
-            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
-            var usr = (from u in db.Users
-                       where u.EmailID == nume
-                       select u).FirstOrDefault();
-
-            if (usr != null)
-            {
-                ViewBag.FirstName = usr.FirstName;
-                ViewBag.LastName = usr.LastName;
-                ViewBag.UserName = usr.Username;
-
+            List<Timetable> list = db.Timetables.Where(x => idDelete.Contains(x.id)).ToList();
+            foreach (Timetable item in list)
+            { 
+            
+                db.Timetables.Remove(item);
             }
-            ViewBag.Movies = db.Movies.ToList();
-            ViewBag.Rooms = db.Rooms.ToList();
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Timetable timetable = db.Timetables.Find(id);
-            if (timetable == null)
-            {
-                return HttpNotFound();
-            }
-            return View(timetable);
-        }
 
-        // POST: Timetables/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Timetable timetable = db.Timetables.Find(id);
-            db.Timetables.Remove(timetable);
             db.SaveChanges();
+
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

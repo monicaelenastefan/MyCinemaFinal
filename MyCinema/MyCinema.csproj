@@ -157,6 +157,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Crypto.cs" />
@@ -235,6 +236,7 @@
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\timingfield.js" />
     <Content Include="StyleSheets\admin-edit.css" />
+    <Content Include="StyleSheets\admin-program-add.css" />
     <Content Include="StyleSheets\custom-room.css" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />
@@ -244,6 +246,7 @@
     <Content Include="StyleSheets\Rooms.css" />
     <Content Include="StyleSheets\Settings.css" />
     <Content Include="StyleSheets\SignUp.css" />
+    <Content Include="StyleSheets\Statistics.css" />
     <Content Include="StyleSheets\style.css" />
     <Content Include="StyleSheets\timingfield.css" />
     <Content Include="Web.config">
@@ -274,7 +277,6 @@
     <Content Include="Views\CinemaRooms\Rooms.cshtml" />
     <Content Include="Views\AddMovie\AddMovie.cshtml" />
     <Content Include="Views\Timetables\Create.cshtml" />
-    <Content Include="Views\Timetables\Delete.cshtml" />
     <Content Include="Views\Timetables\Details.cshtml" />
     <Content Include="Views\Timetables\Edit.cshtml" />
     <Content Include="Views\Timetables\Index.cshtml" />
@@ -295,6 +297,9 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Timetables\BookTicket.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\User\IndexAdmin.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

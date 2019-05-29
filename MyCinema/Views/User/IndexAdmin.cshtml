@@ -1,0 +1,123 @@
+﻿@model IEnumerable<MyCinema.Models.Users>
+@{
+    ViewBag.Title = "IndexAdmin";
+    Layout = "~/Views/Shared/_MenuAdmin.cshtml";
+}
+
+
+
+
+<link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
+<link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-movies-ip.css">
+
+<title>MyCinema | Movies</title>
+
+
+<div class="main">
+    <h2 class="title">Admin | Users</h2>
+
+    <div class="main-container">
+
+        @using (Html.BeginForm("Delete", "User", FormMethod.Post))
+        {
+            <div class="buttons-top">
+                
+
+                <button class="buttons-movie" id="modal-button-add" type="submit">Delete</button>
+
+
+
+            </div>
+
+            <table class="table-of-movies">
+                <tr>
+                    <th>
+                        Number
+                    </th>
+                    <th>
+                        UserName
+                    </th>
+                    <th>
+                        Profile Image
+                    </th>
+                    <th>
+                        FirstName
+                    </th>
+                    <th>
+                        LastName
+                    </th>
+
+                    <th>
+                        E-mail
+                    </th>
+
+                    <th>
+                        Phone Number
+                    </th>
+
+                    <th>Delete</th>
+                    <th>Modify</th>
+                </tr>
+
+                @{ int var = 1;
+                    foreach (var item in Model)
+                    {
+                                <tr>
+
+                                    <td>
+                                        @var
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Username)
+                                    </td>
+                                    <td>
+                                        @if (item.Image != null)
+
+                                        {
+                                            string imageSource = $"data:image;base64,{Convert.ToBase64String(item.Image)}";
+
+                                            <img src="@imageSource" style="width:90px;height:110px;" />
+                                        }
+
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmailID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="UserIdDelete" id="UserIdDelete" value="@item.UserId" />
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.UserId })
+                                    </td>
+                                </tr>
+
+                        var++;
+                    }
+                }
+
+            </table>
+        }
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="../Scripts/script.js"></script>
+<script src="../Scripts/admin-movies-ip.js"></script>
+<script src="../Scripts/alert.js"></script>

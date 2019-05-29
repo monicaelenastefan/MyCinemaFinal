@@ -15,6 +15,34 @@ namespace MyCinema.Controllers
     public class UserController : Controller
     {
         [HttpGet]
+
+
+        public ActionResult IndexAdmin()
+        {
+
+
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
+            return View(db.Users.ToList());
+
+        }
         public ActionResult Registration()
         {
             return View();
@@ -63,9 +91,9 @@ namespace MyCinema.Controllers
                     TempData["ErrorMessage"] = message;
                     return View();
                 }
-                user.IsEmailVerified = false;
+                user.IsEmailVerified = false; 
 
-                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinemaFinal\MyCinema\images\noimg.jpg");
+                byte[] array = System.IO.File.ReadAllBytes(@"C: \Users\Monica\source\repos\MyCinemaFinal\MyCinema\images\noimg2.png");
                 user.Image = array;
                 #region Save to Database
                 using (MyModel dc = new MyModel())
@@ -148,20 +176,29 @@ namespace MyCinema.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
-                            if (v.EmailID == "tampu.andra@yahoo.ro")
                         {
                             Session["name"] = login.EmailID;
-                            if (Session["name"] != null)
-                                return RedirectToAction("Admin", "Home", new { EmailID = Session["name"].ToString() });
-                        }
-                        else
-                        {
-                            Session["name"] = login.EmailID;
-                            if (Session["name"] != null)
-                                return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
+                            Session["FirstName"] = v.FirstName;
+                            Session["LastName"] = v.LastName;
+                            Session["UserId"] = v.UserId;
 
-                            //   return RedirectToAction("Index", "Home");
+                            if (Session["name"] != null)
+                            {
 
+                                if (v.EmailID == "tampu.andra@yahoo.ro")
+                                {
+                                    Session["user"] = "admin";
+                                    return RedirectToAction("Admin", "Home", new { EmailID = Session["name"].ToString() });
+                                }
+                                else
+                                {
+                                    Session["user"] = "client";
+                                    return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
+
+                                    //   return RedirectToAction("Index", "Home");
+
+                                }
+                            }
                         }
 
                     }
@@ -182,11 +219,13 @@ namespace MyCinema.Controllers
             return View();
         }
 
+
         [Authorize]
         [HttpPost]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.RemoveAll();
             return RedirectToAction("Login", "User");
         }
 
@@ -330,6 +369,167 @@ namespace MyCinema.Controllers
             }
             ViewBag.Message = message;
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult Delete(IEnumerable<int> UserIdDelete)
+        {
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
+
+            List<Users>list = db.Users.Where(x => UserIdDelete.Contains(x.UserId)).ToList();
+            foreach (Users item in list)
+            {
+                db.Users.Remove(item);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("IndexAdmin");
+          
+        }
+
+        public ActionResult Edit(int? id)
+        {
+
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+            ViewBag.MovieId = id;
+
+            MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Users users = db.Users.Find(id);
+            if (users == null)
+            {
+                return HttpNotFound();
+            }
+            return View(users);
+        }
+
+        // POST: Movies/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+
+        public ActionResult Edit([Bind(Exclude = "RoomName,FirstName, LastName, Username, PhoneNumber , Image")]  string FirstName, string LastName, string Username , string PhoneNumber, HttpPostedFileBase Image)
+        {
+
+
+            //Pune in ViewBag Email-ul utilizatorului conectat
+            ViewBag.EmailID = Session["name"];
+            String nume;
+            nume = ViewBag.EmailID;
+
+            MyModel db = new MyModel();
+
+            //Fac cate un ViewBag pentru firstname, lastname, username ( ca sa le folosesc in view )
+            var usr = (from u in db.Users
+                       where u.EmailID == nume
+                       select u).FirstOrDefault();
+
+            if (usr != null)
+            {
+                ViewBag.FirstName = usr.FirstName;
+                ViewBag.LastName = usr.LastName;
+                ViewBag.UserName = usr.Username;
+                ViewBag.EmailID = usr.EmailID;
+
+            }
+
+          
+            int UserId = (int)TempData["UserId"];
+            var UserData = (from u in db.Users
+                             where u.UserId == UserId
+                             select u).FirstOrDefault();
+
+
+
+            string filename = "";
+
+            byte[] bytes;
+
+            int BytestoRead;
+
+            int numBytesRead;
+
+            if (Image != null)
+            {
+
+                filename = Path.GetFileName(Image.FileName);
+
+                bytes = new byte[Image.ContentLength];
+
+                BytestoRead = (int)Image.ContentLength;
+
+                numBytesRead = 0;
+
+                while (BytestoRead > 0)
+
+                {
+
+                    int n = Image.InputStream.Read(bytes, numBytesRead, BytestoRead);
+
+                    if (n == 0) break;
+
+                    numBytesRead += n;
+
+                    BytestoRead -= n;
+
+                }
+
+
+                UserData.Image = bytes;
+
+            }
+            if (FirstName.Length>0)
+                UserData.FirstName = FirstName;
+            if (LastName.Length>0)
+                UserData.LastName = LastName;
+            if (Username.Length>0)
+                UserData.Username =Username;
+            if (PhoneNumber.Length >0)
+                UserData.PhoneNumber = PhoneNumber;
+
+            db.Configuration.ValidateOnSaveEnabled = false;
+            db.SaveChanges();
+
+            return RedirectToAction("IndexAdmin");
+
+
         }
 
     }

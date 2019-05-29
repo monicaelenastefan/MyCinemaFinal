@@ -1,0 +1,69 @@
+﻿@model MyCinema.Models.Users
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MenuAdmin.cshtml";
+    TempData["UserId"] = Model.UserId;
+}
+
+
+<link media="screen" rel="stylesheet" type="text/css" href="../StyleSheets/admin-edit.css">
+
+<div class="main">
+    <h2 class="title">Edit Movie : @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</h2>
+    
+
+    <div class="main-container">
+        <form action="@Url.Action("Edit", "User")" method="POST" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div class="buttons-top">
+                <button class="buttons-movie" type="submit">Save</button>
+                <input class="buttons-movie" type="button" onclick="location.href='@Url.Action("IndexAdmin", "Movies")'" value="Discard" />
+            </div>
+            <div class="row-container">
+                <div class="col no-gutters">
+                    <p>Current First Name:</p>
+                    <input type="text" disabled name="old-movie-name" value="@Html.DisplayFor(model => model.FirstName)" style="width:100%">
+                    <p>Current Last Name:</p>
+                    <input type="text" disabled name="old-movie-price" value="@Html.DisplayFor(model => model.LastName)" style="width:100%">
+                    <p>Current Username:</p>
+                    <input type="text" disabled name="old-movie-name" value="@Html.DisplayFor(model => model.Username)" style="width:100%">
+                    <p>Current Phone number:</p>
+                    <input type="text" disabled name="old-movie-duration" value="@Html.DisplayFor(model => model.PhoneNumber)" style="width:100%">
+
+                    <p class="go-down">Current Profile image:</p>
+                    @if (@Model.Image != null)
+
+                    {
+                        string imageSource = $"data:image;base64,{Convert.ToBase64String(@Model.Image)}";
+
+                        <img src="@imageSource" class="old-image"  />
+                    }
+
+                </div>
+                <div class="col no-gutters">
+                    <p>New First Name:</p>
+                    <input type="text" name="FirstName" style="width:100%">
+                    <p>New Last Name:</p>
+                    <input type="text" name="LastName" style="width:100%">
+                    <p>New Username:</p>
+                    <input type="text" name="Username" style="width:100%">
+                    <p>New Phone number:</p>
+                    <input type="text" name="PhoneNumber" style="width:100%">
+                    <p>New Profile image:</p>
+                    <input type="file" accept="image/*" name="Image">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="../Scripts/timingfield.js"></script>
+<script src="../scripts-common/script.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

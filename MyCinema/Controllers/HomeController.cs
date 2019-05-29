@@ -42,9 +42,10 @@ namespace MyCinema.Controllers
         public ActionResult Admin(string name)
         {
             MyModel db = new MyModel();
-            int LastUserId = db.Users.Max(p => p.UserId);
-            int LastRoomId = db.Rooms.Max(p => p.RoomId);
-            int LastMovieId= db.Movies.Max(p => p.MovieId);
+
+            int LastUserId = db.Users.DefaultIfEmpty().Max(p => p == null ? 0 : p.UserId);
+            int LastRoomId = db.Rooms.DefaultIfEmpty().Max(p => p == null ? 0 : p.RoomId);
+            int LastMovieId= db.Movies.DefaultIfEmpty().Max(p => p == null ? 0 : p.MovieId);
             var LastUser = (from u in db.Users
                        where u.UserId == LastUserId
                             select u).FirstOrDefault();
@@ -161,7 +162,11 @@ namespace MyCinema.Controllers
                     ViewBag.BirthDay = usr.BirthDay;
                     Session["name"] = usr.EmailID;
 
-                    dc.Configuration.ValidateOnSaveEnabled = false;
+                    Session["FirstName"] = usr.FirstName;
+                    Session["LastName"] = usr.LastName;
+
+
+                dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 
                 }
