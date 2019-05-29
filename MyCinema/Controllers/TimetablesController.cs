@@ -130,6 +130,16 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
+            int[,] m = new int[13, 13];
+            for(int i=0;i<13;i++)
+            {
+                for(int j=0;j<13;j++)
+                {
+                    m[i, j] = 0;
+                }
+            }
+            timetable.Matrix = m;
+
             if (ModelState.IsValid)
             {
                 db.Timetables.Add(timetable);
@@ -202,6 +212,16 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
+
+            int[,] amn = new int[13, 13];
+            /*for(int i=0;i<=13;i++)
+            {
+                for (int j = 0; j <= 13; j++)
+                    amn[i, j] = 0;
+            }*/
+            timetable.Matrix = amn;
+            
+
             if (ModelState.IsValid)
             {
                 db.Entry(timetable).State = EntityState.Modified;
@@ -279,11 +299,12 @@ namespace MyCinema.Controllers
             }
 
 
-            var map = new Dictionary<string, List<TimeSpan>>();
+            var map = new Dictionary<string, Tuple<int,List<TimeSpan>>>();
             
             foreach (var movie in moviesToday)
             {
                 List<TimeSpan> hours = new List<TimeSpan>();
+                int x = 0;
 
                 foreach(var item in model.Timetables)
                 {
@@ -297,10 +318,15 @@ namespace MyCinema.Controllers
                     ViewBag.price = model.Movies.Find(item.MovieId).Price.ToString();
                     TempData["MovieName"] = movie;
                     ViewBag.time = item.StartTime;
+                    x = item.MovieId;
+                    
                 }
-                
-                map.Add(movie, hours);
+
+                var tuple = new Tuple<int, List<TimeSpan>>(x, hours);
+
+                map.Add(movie, tuple);
                 ViewBag.movie = movie;
+                
             }
             ViewBag.date = date;
             ViewBag.map = map;
@@ -309,7 +335,7 @@ namespace MyCinema.Controllers
         }
 
         [HttpGet]
-        public ActionResult BookTicket()
+        public ActionResult BookTicket(int? id)
         {
             ViewBag.EmailID = Session["name"];
             String nume;
@@ -327,7 +353,16 @@ namespace MyCinema.Controllers
                 ViewBag.email = usr.EmailID;
 
             }
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Timetable timetable = db.Timetables.Find(id);
+            if (timetable == null)
+            {
+                return HttpNotFound();
+            }
+            return View(timetable);
         }
 
         [HttpPost]

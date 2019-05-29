@@ -19,6 +19,8 @@ namespace MyCinema.Controllers
         // GET: Statistics
         public ActionResult Index()
         {
+
+            //Age distribution
             long UsersUnder12 = 0;
             long UsersUnder15 = 0;
             long UsersUnder18 = 0;
@@ -52,6 +54,7 @@ namespace MyCinema.Controllers
             ViewBag.Adults = UsersAbove18;
 
             ///
+            //Movies PLayed
             int[] Movies = new int[14];
 
 
@@ -83,6 +86,97 @@ namespace MyCinema.Controllers
             ViewBag.MoviesLastWeek = MoviesLastWeek;
             float Percentage = ((float)(MoviesThisWeek - MoviesLastWeek) / (float)MoviesLastWeek) * 100;
             ViewBag.Percentage = Percentage;
+
+
+            //MovieDistribution
+            int Price10 = 0;
+            int Price15 = 0;
+            int Price20 = 0;
+            int Price25 = 0;
+            int Price30 = 0;
+            int PriceX = 0;
+
+
+            foreach(var Movie in db.Movies)
+            {
+                if (Movie.Price <= 10)
+                    Price10++;
+                else
+                    if (Movie.Price <= 15)
+                    Price15++;
+                else
+                    if (Movie.Price <= 20)
+                    Price20++;
+                else
+                    if (Movie.Price <= 25)
+                    Price25++;
+                else
+                    if (Movie.Price <= 30)
+                    Price30++;
+                else
+                    PriceX++;
+            }
+
+            ViewBag.Price10 = Price10;
+            ViewBag.Price15 = Price15;
+            ViewBag.Price20 = Price20;
+            ViewBag.Price25 = Price25;
+            ViewBag.Price30 = Price30;
+            ViewBag.PriceX = PriceX;
+
+            //Total tickets && Total Earnings
+            long[] Tickets = new long[14];
+            double[] Earnings = new double[14];
+            Today = DateTime.Today.DayOfYear;
+            foreach (var Reservation in db.Reservations)
+            {
+                int Days = (Today - Reservation.Day.DayOfYear) % 365;
+                if (Days < 14 && Days >= 0)
+                {
+                    Tickets[Days]++;
+                    Earnings[Days] += Reservation.Price;
+                }
+            }
+            ViewBag.TicketsThisWeek = Tickets[0] + Tickets[1] + Tickets[2] + Tickets[3] + Tickets[4] + Tickets[5] + Tickets[6];
+            ViewBag.TicketsLastWeek = Tickets[7] + Tickets[8] + Tickets[9] + Tickets[10] + Tickets[11] + Tickets[12] + Tickets[13];
+            ViewBag.Tickets0 = Tickets[0];
+            ViewBag.Tickets1 = Tickets[1];
+            ViewBag.Tickets2 = Tickets[2];
+            ViewBag.Tickets3 = Tickets[3];
+            ViewBag.Tickets4 = Tickets[4];
+            ViewBag.Tickets5 = Tickets[5];
+            ViewBag.Tickets6 = Tickets[6];
+            ViewBag.Tickets7 = Tickets[7];
+            ViewBag.Tickets8 = Tickets[8];
+            ViewBag.Tickets9 = Tickets[9];
+            ViewBag.Tickets10 = Tickets[10];
+            ViewBag.Tickets11 = Tickets[11];
+            ViewBag.Tickets12 = Tickets[12];
+            ViewBag.Tickets13 = Tickets[13];
+            float TicketsPercentage = ((float)(ViewBag.TicketsThisWeek - ViewBag.TicketsLastWeek) / (float)ViewBag.TicketsLastWeek) * 100;
+            ViewBag.TicketsPercentage = TicketsPercentage;
+
+
+            ViewBag.EarningsThisWeek = Earnings[0] + Earnings[1] + Earnings[2] + Earnings[3] + Earnings[4] + Earnings[5] + Earnings[6];
+            ViewBag.EarningsLastWeek = Earnings[7] + Earnings[8] + Earnings[9] + Earnings[10] + Earnings[11] + Earnings[12] + Earnings[13];
+            ViewBag.Earnings0 = Earnings[0];
+            ViewBag.Earnings1 = Earnings[1];
+            ViewBag.Earnings2 = Earnings[2];
+            ViewBag.Earnings3 = Earnings[3];
+            ViewBag.Earnings4 = Earnings[4];
+            ViewBag.Earnings5 = Earnings[5];
+            ViewBag.Earnings6 = Earnings[6];
+            ViewBag.Earnings7 = Earnings[7];
+            ViewBag.Earnings8 = Earnings[8];
+            ViewBag.Earnings9 = Earnings[9];
+            ViewBag.Earnings10 = Earnings[10];
+            ViewBag.Earnings11 = Earnings[11];
+            ViewBag.Earnings12 = Earnings[12];
+            ViewBag.Earnings13 = Earnings[13];
+            float EarningsPercentage = ((float)(ViewBag.EarningsThisWeek - ViewBag.EarningsLastWeek) / (float)ViewBag.EarningsLastWeek) * 100;
+            ViewBag.EarningsPercentage = EarningsPercentage;
+
+
 
             return View();
         }
