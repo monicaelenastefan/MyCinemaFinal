@@ -25,28 +25,36 @@
                 <!-- 13 x 7 -->
                 <table id="table" class="room-view-table">
                     @{
-                        var matrix = (int[,])TempData["matrix"];
+                        
 
-                        for (int i = 1; i <= 13; i++)
+                        for (int i = 0; i < 13; i++)
                         {
-                        <tr>
-                            @for (int j = 0; j <= 13; j++)
-                            {
-                                if (matrix[i, j] != 1)
-                                {
-                                    <td>
-                                        <div class="chair booked" onclick="showpopup(this)"></div>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <div class="chair free" onclick="showpopup(this)"></div>
-                                    </td>
-                                }
+                                        <tr>
+                                            @for (int j = 0; j < 13; j++)
+                                            {
 
-                            }
-                        </tr>
+
+                                                if (Model.Matrix[i * 13 + j] == '0')
+                                                {
+
+                                                    <td>
+                                                        <div class="chair free" onclick="showpopup(this)"></div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+
+
+                                                    <td>
+                                                        <div class="chair booked" onclick="showpopup(this)"></div>
+                                                    </td>
+                                                }
+
+
+
+
+                                            }
+                                        </tr>
                             } 
                         }
 

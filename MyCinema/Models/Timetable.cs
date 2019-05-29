@@ -26,7 +26,7 @@ namespace MyCinema.Models
         [DataType(DataType.DateTime)]
         public TimeSpan StartTime { get; set; }
 
-        public int[,] Matrix { get; set; }
+        public String Matrix { get; set; }
 
      
     }

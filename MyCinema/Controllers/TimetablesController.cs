@@ -130,15 +130,11 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
-            int[,] m = new int[13, 13];
-            for(int i=0;i<13;i++)
+            
+           for ( int i=0; i < 169; i++)
             {
-                for(int j=0;j<13;j++)
-                {
-                    m[i, j] = 0;
-                }
+                timetable.Matrix = timetable.Matrix + '0';
             }
-            timetable.Matrix = m;
 
             if (ModelState.IsValid)
             {
@@ -213,13 +209,13 @@ namespace MyCinema.Controllers
 
             }
 
-            int[,] amn = new int[13, 13];
+          //  int[,] amn = new int[13, 13];
             /*for(int i=0;i<=13;i++)
             {
                 for (int j = 0; j <= 13; j++)
                     amn[i, j] = 0;
             }*/
-            timetable.Matrix = amn;
+          //  timetable.Matrix = amn;
             
 
             if (ModelState.IsValid)
