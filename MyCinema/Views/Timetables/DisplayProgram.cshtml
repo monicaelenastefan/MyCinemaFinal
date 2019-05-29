@@ -25,9 +25,9 @@
         </div>
 
 
-        @foreach (KeyValuePair<string, List<TimeSpan>> item in ViewBag.map)
+        @foreach (KeyValuePair<string, Tuple<int,List<TimeSpan>>> item in ViewBag.map)
         {
-            List<TimeSpan> list = item.Value;
+            List<TimeSpan> list = item.Value.Item2;
             <div class="table-row">
                 <div class="column-left">
                     <div class="information-play"></div>
@@ -37,7 +37,7 @@
                 @foreach (var hour in list)
                 {
                     <div class="column-right">
-                        <button class="button-hour" onclick="location.href='@Url.Action("BookTicket", "Timetables")'">@hour.ToString()</button>
+                        <button class="button-hour" onclick="location.href='@Url.Action("BookTicket", "Timetables",new { id = item.Value.Item1 })'">@hour.ToString()</button>
 
                     </div>
                 }

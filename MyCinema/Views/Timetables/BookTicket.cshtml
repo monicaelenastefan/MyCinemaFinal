@@ -1,8 +1,10 @@
-﻿
+﻿@model MyCinema.Models.Timetable
 @{
     ViewBag.Title = "BookTicket";
     Layout = "~/Views/Shared/_Menu.cshtml";
+    TempData["matrix"] = Model.Matrix;
 }
+
 
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,543 +24,32 @@
             <div class="room-view">
                 <!-- 13 x 7 -->
                 <table id="table" class="room-view-table">
-                    <tr>
-                        <td colspan="13" class="screen-row"><div class="screen-el">Screen</div></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                        <td>
-                            <div class="chair free" onclick="showpopup(this)"></div>
-                        </td>
-                    </tr>
-                    
+                    @{
+                        var matrix = (int[,])TempData["matrix"];
+
+                        for (int i = 1; i <= 13; i++)
+                        {
+                        <tr>
+                            @for (int j = 0; j <= 13; j++)
+                            {
+                                if (matrix[i, j] != 1)
+                                {
+                                    <td>
+                                        <div class="chair booked" onclick="showpopup(this)"></div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <div class="chair free" onclick="showpopup(this)"></div>
+                                    </td>
+                                }
+
+                            }
+                        </tr>
+                            } 
+                        }
+
                 </table>
                 <div class="room-view-legend">
                     <div class="chair free"></div> Free <br>
@@ -591,20 +82,22 @@
             <div class="buttons">
                 <button class="button1" id="closebtn">close</button>
                 <button class="button2" id="reservebtn">Book ticket</button>
+                
             </div>
         </div>
     </div>
 
     <style>
-        
+
+
         hr {
-            display: block;
-            height: 1px;
-            border: 0;
-            border-top: 1px solid #ccc;
+                            display: block;
+                            height: 1px;
+                            border: 0;
+                                border-top: 1px solid #ccc;
             margin: 2em 0;
-            padding: 0;
-        }
+                            padding: 0;
+                            }
         .p {
             font-size: 13px;
         }
@@ -690,7 +183,7 @@
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+                    z-index: 1; /* Sit on top */
             padding-top: 30px; /* Location of the box */
             left: 0;
             top: 0;
@@ -698,7 +191,7 @@
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
         /* Modal Content */
@@ -717,40 +210,23 @@
 
 <script>
     function showpopup(btn) {
-        var modal = document.getElementById("myModal");
+                        var modal = document.getElementById("myModal");
 
-        //var btn = document.getElementById("myBtn");
+                        //var btn = document.getElementById("myBtn");
 
-        var close = document.getElementById("closebtn");
+                        var close = document.getElementById("closebtn");
 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
+                        btn.onclick = function () {
+                            modal.style.display = "block";
+                        }
 
-        close.onclick = function () {
-            modal.style.display = "none";
-        }
-    }
-    //onclick="location.href='Url.Action("BookTicket", "Timetables", new { row=$('#row1').val() })' "
+                        close.onclick = function () {
+                            modal.style.display = "none";
+                        }
+                    }
 
 </script>
 
-
-<script>
-
-    var table = document.getElementById("table"), rIndex, cIndex;
-    for (var i = 0; i < table.rows.length; i++) {
-        for (var j = 0; j < table.rows[i].cells.length; j++) {
-            table.rows[i].cells[j].onclick = function () {
-                rIndex = this.parentElement.rowIndex;
-                cIndex = this.cellIndex + 1;
-                console.log(rIndex + ' ' + cIndex);
-                document.getElementById("row1").value = rIndex;
-                document.getElementById('column').value = cIndex;
-            }
-        }
-    }
-</script>
 
 <script>
     var btn = document.getElementById("reservebtn");
