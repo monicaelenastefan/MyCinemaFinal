@@ -17,62 +17,97 @@
 
 <title>MyCinema | Time Schedule</title>
 
-<div class="main">
-    <h2 class="title">Time schedule</h2>
 
+
+
+<div class="main">
+
+    <h2 class="title">Admin | Program</h2>
     <div class="main-container">
 
+        @using (Html.BeginForm("Delete", "Timetables", FormMethod.Post))
+        {
+            <div class="buttons-top">
+                <a class="buttons-movie" href="@Url.Action("Create", "Timetables")" onclick="currentMenu()">
+                    Add Movie
+                </a>
+
+                <button class="buttons-movie" id="modal-button-add" type="submit">Delete</button>
 
 
-        <div class="buttons-top">
-            <a class="buttons-movie" href="@Url.Action("Create", "Timetables" )" onclick="currentMenu()">
-                Add
-            </a>
-            <a class="buttons-movie" href="@Url.Action("Index", "Timetables" )" onclick="currentMenu()">
-                Delete(to do)
-            </a>
-        </div>
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.MovieId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RoomId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StartTime)
-                </th>
-                <th></th>
-            </tr>
+            </div>
 
-            @foreach (var item in Model)
-            {
+            <table class="table-of-movies">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MovieId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RoomId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartTime)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                    </td>
-                </tr>
-            }
+                    <th>
+                        Number
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Room
+                    </th>
+                    <th>
+                        Date
+                    </th>
 
-        </table>
-        <script src="../Scripts/script.js"></script>
-        <script src="../Scripts/alert.js"></script>
+                    <th>
+                        Time
+                    </th>
+
+                    <th>Delete</th>
+
+                </tr>
+
+                @{ int var = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @var
+                            </td>
+
+
+                            @foreach (var itemM in Movies)
+                            {
+                                if (item.MovieId == itemM.MovieId)
+                                {
+                                    <td> @itemM.Name </td>
+                                }
+                            }
+
+                            @foreach (var itemR in Rooms)
+                            {
+                                if (item.RoomId == itemR.RoomId)
+                                {
+                                    <td> @itemR.RoomName </td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartTime)
+                            </td>
+                            <td>
+                                <input type="checkbox" name="idDelete" id="idDelete" value="@item.id" />
+                            </td>
+
+
+                        </tr>
+
+                        var++;
+                    }
+                }
+
+            </table>
+        }
+    </div>
+
+</div>
+
+
+

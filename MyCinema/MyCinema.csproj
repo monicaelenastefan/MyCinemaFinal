@@ -275,7 +275,6 @@
     <Content Include="Views\CinemaRooms\Rooms.cshtml" />
     <Content Include="Views\AddMovie\AddMovie.cshtml" />
     <Content Include="Views\Timetables\Create.cshtml" />
-    <Content Include="Views\Timetables\Delete.cshtml" />
     <Content Include="Views\Timetables\Details.cshtml" />
     <Content Include="Views\Timetables\Edit.cshtml" />
     <Content Include="Views\Timetables\Index.cshtml" />
