@@ -295,6 +295,8 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Timetables\BookTicket.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\User\IndexAdmin.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
