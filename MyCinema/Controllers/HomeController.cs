@@ -162,7 +162,11 @@ namespace MyCinema.Controllers
                     ViewBag.BirthDay = usr.BirthDay;
                     Session["name"] = usr.EmailID;
 
-                    dc.Configuration.ValidateOnSaveEnabled = false;
+                    Session["FirstName"] = usr.FirstName;
+                    Session["LastName"] = usr.LastName;
+
+
+                dc.Configuration.ValidateOnSaveEnabled = false;
                     dc.SaveChanges();
 
                 }

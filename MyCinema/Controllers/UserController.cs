@@ -176,20 +176,29 @@ namespace MyCinema.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
-                            if (v.EmailID == "tampu.andra@yahoo.ro")
                         {
                             Session["name"] = login.EmailID;
-                            if (Session["name"] != null)
-                                return RedirectToAction("Admin", "Home", new { EmailID = Session["name"].ToString() });
-                        }
-                        else
-                        {
-                            Session["name"] = login.EmailID;
-                            if (Session["name"] != null)
-                                return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
+                            Session["FirstName"] = v.FirstName;
+                            Session["LastName"] = v.LastName;
+                            Session["UserId"] = v.UserId;
 
-                            //   return RedirectToAction("Index", "Home");
+                            if (Session["name"] != null)
+                            {
 
+                                if (v.EmailID == "tampu.andra@yahoo.ro")
+                                {
+                                    Session["user"] = "admin";
+                                    return RedirectToAction("Admin", "Home", new { EmailID = Session["name"].ToString() });
+                                }
+                                else
+                                {
+                                    Session["user"] = "client";
+                                    return RedirectToAction("Index", "Home", new { EmailID = Session["name"].ToString() });
+
+                                    //   return RedirectToAction("Index", "Home");
+
+                                }
+                            }
                         }
 
                     }
@@ -210,11 +219,13 @@ namespace MyCinema.Controllers
             return View();
         }
 
+
         [Authorize]
         [HttpPost]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.RemoveAll();
             return RedirectToAction("Login", "User");
         }
 
