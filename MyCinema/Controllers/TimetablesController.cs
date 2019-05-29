@@ -361,20 +361,20 @@ namespace MyCinema.Controllers
             return View(timetable);
         }
 
-        [HttpPost]
-        public ActionResult BookTicket(string row,string column)
+        [HttpGet]
+        public ActionResult BookTicket2(string row,string column)
         {
-            Reservations reservation = new Reservations
-            {
-                Email=ViewBag.email,
-                Movie = ViewBag.movie,
-                Room = ViewBag.room,
-                Day = ViewBag.date,
-                Hour = ViewBag.time,
-                Row = Int32.Parse(row),
-                Column = Int32.Parse(column),
-                Price = ViewBag.price
-            };
+            Reservations reservation = new Reservations();
+
+            reservation.Email = ViewBag.email;
+            reservation.Movie = ViewBag.movie;
+            reservation. Room = ViewBag.room;
+            reservation.Day = ViewBag.date;
+            reservation.Hour = ViewBag.time;
+            reservation.Row = Int32.Parse(row);
+            reservation.Column = Int32.Parse(column);
+            reservation.Price = ViewBag.price;
+            
 
             db.Reservations.Add(reservation);
             db.SaveChanges();
