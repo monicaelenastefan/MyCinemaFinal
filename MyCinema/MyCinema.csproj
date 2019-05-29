@@ -235,6 +235,7 @@
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\timingfield.js" />
     <Content Include="StyleSheets\admin-edit.css" />
+    <Content Include="StyleSheets\admin-program-add.css" />
     <Content Include="StyleSheets\custom-room.css" />
     <Content Include="StyleSheets\ForgotPassword.css" />
     <Content Include="StyleSheets\Login.css" />

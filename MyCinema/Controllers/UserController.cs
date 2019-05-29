@@ -504,13 +504,13 @@ namespace MyCinema.Controllers
                 UserData.Image = bytes;
 
             }
-            if (FirstName != null)
+            if (FirstName.Length>0)
                 UserData.FirstName = FirstName;
-            if (LastName != null)
+            if (LastName.Length>0)
                 UserData.LastName = LastName;
-            if (Username != null)
+            if (Username.Length>0)
                 UserData.Username =Username;
-            if (PhoneNumber != null)
+            if (PhoneNumber.Length >0)
                 UserData.PhoneNumber = PhoneNumber;
 
             db.Configuration.ValidateOnSaveEnabled = false;
