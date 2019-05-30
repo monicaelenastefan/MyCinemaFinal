@@ -84,7 +84,7 @@
                 <input type="text" id="row1" class="ir" readonly />
 
                 <p class="column">Column:</p>
-                <input type="text" id="column" class="ic" readonly />
+                <input type="text" id="column" class="ir1" readonly />
 
             </div>
             <p class="p">Price:</p>
@@ -131,10 +131,6 @@
 
         .ir {
             background-color: #F0EFF5;
-            width: 110%;
-        }
-
-        input[type=text], select, textarea {
             width: 102%;
             padding: 12px;
             border: 0.7px solid #ccc;
@@ -142,6 +138,26 @@
             resize: vertical;
             height: 2%;
         }
+
+        .ir1 {
+            background-color: #F0EFF5;
+            width: 93%;
+            padding: 12px;
+            border: 0.7px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            height: 2%;
+            margin-left: 10%;
+        }
+        .ic {
+            background-color: #F0EFF5;
+            grid-row: 2;
+            grid-column: 2;
+            width: 2%;
+            margin-left: 10%;
+        }
+
+       
 
         .column {
             font-size: 13px;
@@ -151,13 +167,7 @@
             margin-left: 10%;
         }
 
-        .ic {
-            background-color: #F0EFF5;
-            grid-row: 2;
-            grid-column: 2;
-            width: 2%;
-            margin-left: 10%;
-        }
+       
 
         .buttons {
             display: flex;
