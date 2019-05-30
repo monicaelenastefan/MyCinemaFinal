@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using MyCinema.Models;
@@ -264,6 +265,7 @@ namespace MyCinema.Controllers
         {
             MyModel model = new MyModel();
             ViewBag.EmailID = Session["name"];
+            TempData["Email"] = Session["name"];
             String nume;
             nume = ViewBag.EmailID;
             var db = new MyModel();
@@ -309,14 +311,18 @@ namespace MyCinema.Controllers
                         
                             hours.Add(item.StartTime);
                     TempData["RoomName"]=model.Rooms.Find(item.RoomId).RoomName.ToString();
-                    ViewBag.room = model.Rooms.Find(item.RoomId).RoomName.ToString();
+                      TempData["Room"] = model.Rooms.Find(item.RoomId).RoomName.ToString();
                     TempData["Price"] = model.Movies.Find(item.MovieId).Price.ToString();
-                    ViewBag.price = model.Movies.Find(item.MovieId).Price.ToString();
+                    TempData["_Price"] = model.Movies.Find(item.MovieId).Price;
                     TempData["MovieName"] = movie;
-                    ViewBag.time = item.StartTime;
+                    TempData["Movie"] = movie;
+                    TempData["Hour"] = item.StartTime;
                     x = item.MovieId;
                     
                 }
+
+
+
 
                 var tuple = new Tuple<int, List<TimeSpan>>(x, hours);
 
@@ -324,7 +330,7 @@ namespace MyCinema.Controllers
                 ViewBag.movie = movie;
                 
             }
-            ViewBag.date = date;
+            TempData["Date"] = date;
             ViewBag.map = map;
 
             return View();
@@ -366,20 +372,39 @@ namespace MyCinema.Controllers
         {
             Reservations reservation = new Reservations();
 
-            reservation.Email = ViewBag.email;
-            reservation.Movie = ViewBag.movie;
-            reservation. Room = ViewBag.room;
-            reservation.Day = ViewBag.date;
-            reservation.Hour = ViewBag.time;
+            reservation.Email = TempData["Email"].ToString();
+            reservation.Movie = TempData["Movie"].ToString();
+            reservation.Room = TempData["Room"].ToString();
+            reservation.Day = DateTime.Parse(TempData["Date"].ToString());
+            reservation.Hour  = TimeSpan.Parse(TempData["Hour"].ToString());
             reservation.Row = Int32.Parse(row);
             reservation.Column = Int32.Parse(column);
-            reservation.Price = ViewBag.price;
-            
+            reservation.Price = Double.Parse(TempData["_Price"].ToString());
+
+            int id = Int32.Parse(TempData["TimetableId"].ToString());
+
+            var _Timetable = (from u in db.Timetables
+                              where u.id == id
+                              select u).FirstOrDefault();
+            int _row = Int32.Parse(row);
+            _row--;
+            int _column = Int32.Parse(column);
+            _column--;
+
+
+            StringBuilder str = new StringBuilder(_Timetable.Matrix);
+            str[_row * 13 + _column] = '1';
+
+            _Timetable.Matrix = str.ToString();
+
+
 
             db.Reservations.Add(reservation);
             db.SaveChanges();
 
-            return View();
+
+           return RedirectToAction("DisplayProgram","Timetables", new { date = @DateTime.Now });
+            //return RedirectToAction("BookTicket", "Timetables", new { id = id});
         }
     }
 }
