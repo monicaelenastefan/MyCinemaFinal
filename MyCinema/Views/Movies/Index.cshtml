@@ -38,7 +38,7 @@
                         <p>@Html.DisplayFor(modelItem => item.Price) RON</p>
                     </div>
                     <div class="movie-book-now">
-                        <button class="movie-button-book-now">Book now</button>
+                        <button class="movie-button-book-now"  onclick="location.href='@Url.Action("DisplayProgram", "Timetables", new { date = @DateTime.Now })'"   >Book now</button>
                     </div>
 
                     </div>
