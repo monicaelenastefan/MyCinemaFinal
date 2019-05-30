@@ -46,6 +46,7 @@ namespace MyCinema.Controllers
             int LastUserId = db.Users.DefaultIfEmpty().Max(p => p == null ? 0 : p.UserId);
             int LastRoomId = db.Rooms.DefaultIfEmpty().Max(p => p == null ? 0 : p.RoomId);
             int LastMovieId= db.Movies.DefaultIfEmpty().Max(p => p == null ? 0 : p.MovieId);
+           
             var LastUser = (from u in db.Users
                        where u.UserId == LastUserId
                             select u).FirstOrDefault();
@@ -53,6 +54,7 @@ namespace MyCinema.Controllers
             ViewBag.TotalUsers = db.Users.Count();
             ViewBag.TotalMovies = db.Movies.Count();
             ViewBag.TotalRooms = db.Rooms.Count();
+            ViewBag.TotalBookings = db.Reservations.Count();
 
             var LastRoom = (from u in db.Rooms
                            where u.RoomId == LastRoomId
