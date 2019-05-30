@@ -26,14 +26,22 @@ namespace MyCinema.Controllers
                        where u.EmailID == nume
                        select u).FirstOrDefault();
 
+
             if (usr != null)
             {
+
                 ViewBag.FirstName = usr.FirstName;
                 ViewBag.LastName = usr.LastName;
                 ViewBag.UserName = usr.Username;
 
             }
 
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
 
             return View();
         }
@@ -115,6 +123,12 @@ namespace MyCinema.Controllers
                 ViewBag.BirthDay = usr.BirthDay;
 
             }
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
 
             return View();
         }
@@ -173,7 +187,14 @@ namespace MyCinema.Controllers
 
                 else ViewBag.Status = "Nu a gasit email!";
 
-                return View();
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
+
+            return View();
        
         }
 

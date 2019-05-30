@@ -27,6 +27,11 @@ namespace MyCinema.Models
 
         public int Row { get; set; }
 
+        internal object ToList()
+        {
+            throw new NotImplementedException();
+        }
+
         public int Column { get; set; }
 
         public double Price { get; set; }

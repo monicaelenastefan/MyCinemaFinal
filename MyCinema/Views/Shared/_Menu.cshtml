@@ -1,6 +1,9 @@
 ﻿
 @{
+
     Layout = null;
+      List<MyCinema.Models.Movies> Movies = ViewBag.Movies;
+     List<MyCinema.Models.Reservations> Reservation = ViewBag.Reservations;
 }
 
 @{
@@ -87,19 +90,18 @@
                     </button>
                     <ul class="dropdown-menu scrollable-menu" role="menu">
                         <li><a href="#">Action</a></li>
+                        <li></li>
+                        @foreach(var item in Reservation)
+                        {
+                            <li>
+                                @item.Movie
+                            </li>
+                        }
+
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
+                       
                     </ul>
 
 

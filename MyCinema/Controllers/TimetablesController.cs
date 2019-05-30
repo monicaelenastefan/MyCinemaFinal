@@ -39,6 +39,11 @@ namespace MyCinema.Controllers
             }
             ViewBag.Movies = db.Movies.ToList();
             ViewBag.Rooms = db.Rooms.ToList();
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Reservations = Reservation;
             return View(db.Timetables.ToList());
         }
 
@@ -332,6 +337,12 @@ namespace MyCinema.Controllers
             }
             TempData["Date"] = date;
             ViewBag.map = map;
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
 
             return View();
         }

@@ -15,6 +15,7 @@ namespace MyCinema.Controllers
     public class MoviesController : Controller
     {
         private MyModel db = new MyModel();
+        
 
 
         public ActionResult Index()
@@ -34,6 +35,13 @@ namespace MyCinema.Controllers
                 ViewBag.UserName = usr.Username;
 
             }
+
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
 
             var item = (from d in db.Movies
                         select d).ToList();

@@ -19,6 +19,13 @@ namespace MyCinema.Controllers
         // GET: Statistics
         public ActionResult Index()
         {
+            var nume = Session["name"].ToString();
+            var Res = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Res;
 
             //Age distribution
             long UsersUnder12 = 0;

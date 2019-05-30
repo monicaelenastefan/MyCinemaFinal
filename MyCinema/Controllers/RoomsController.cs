@@ -19,9 +19,16 @@ namespace MyCinema.Controllers
         public ActionResult Index()
         {
             MyModel db = new MyModel();
+            var nume = Session["name"].ToString();
             var item = (from d in db.Rooms
                         select d).ToList();
             ViewData["Rooms"] = db.Rooms.ToList();
+            var Reservation = (from u in db.Reservations
+                               where u.Email == nume.ToString()
+                               select u).ToList();
+
+            ViewBag.Movies = db.Movies.ToList();
+            ViewBag.Reservations = Reservation;
             return View(item);
         }
 

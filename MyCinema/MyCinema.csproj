@@ -153,7 +153,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddMovieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
@@ -275,7 +274,6 @@
     <Content Include="Views\Home\Settings.cshtml" />
     <Content Include="Views\Home\AddRoom.cshtml" />
     <Content Include="Views\CinemaRooms\Rooms.cshtml" />
-    <Content Include="Views\AddMovie\AddMovie.cshtml" />
     <Content Include="Views\Timetables\Create.cshtml" />
     <Content Include="Views\Timetables\Details.cshtml" />
     <Content Include="Views\Timetables\Edit.cshtml" />
