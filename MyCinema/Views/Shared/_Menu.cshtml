@@ -30,6 +30,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,500,600,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../StyleSheets/MoviesDropdown.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../../StyleSheets/Menu.css">
     <link href="/Content/timingfield/timingfield.css" type="text/css" rel="stylesheet" media="screen" />
     <link media="screen" rel="stylesheet" type="text/css" href="/Content/admin-menu-ip.css">
@@ -89,19 +90,38 @@
                         <img alt="" class="notif-ico" src="../images/icon_notification.svg" />
                     </button>
                     <ul class="dropdown-menu scrollable-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li></li>
-                        @foreach(var item in Reservation)
+                        <li><a href="#">Booked Movies:</a></li>
+                        @if (Reservation == null)
                         {
-                            <li>
-                                @item.Movie
-                            </li>
+                            <li>No movies booked</li>
                         }
+                        else
+                        {
+                            foreach (var item in Reservation)
+                            {
+                            <li>
+                                <div class="grid-container2">
+                                    <div class="itm1">@item.Movie</div>
+                                    @foreach (var movie in Movies)
+                                    {
+                                        if (item.Movie == movie.Name)
+                                        {
+                                            var base64 = Convert.ToBase64String(movie.Image);
+                                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                                          <div class="itm2"><img src="@imgsrc" style="width:40px;height:40px;" /></div>
+                                            break;
+                                        }
 
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Action</a></li>
-                       
+                                    }
+                                    <div class="itm3" style="color:gray; height:50%;">@item.Day.ToString("dd-MM-yyyy"), @item.Hour</div>
+
+                                </div>
+
+
+                    </li>
+                            }
+
+                        }
                     </ul>
 
 

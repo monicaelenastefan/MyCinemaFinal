@@ -247,6 +247,7 @@
     <Content Include="StyleSheets\SignUp.css" />
     <Content Include="StyleSheets\Statistics.css" />
     <Content Include="StyleSheets\style.css" />
+    <Content Include="StyleSheets\MoviesDropdown.css" />
     <Content Include="StyleSheets\timingfield.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

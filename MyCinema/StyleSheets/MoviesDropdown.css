@@ -1,0 +1,26 @@
+﻿.itm1 {
+    grid-area: header;
+}
+
+.itm2 {
+    grid-area: main;
+}
+
+.itm3 {
+    grid-area: footer;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-areas:  'main main header header header header' 
+                          'main main header header header header'
+                          'main main footer footer footer footer';
+    padding-top:5px;
+}
+
+    .grid-container2 > div {
+      
+        text-align: left;
+       
+ 
+    }
